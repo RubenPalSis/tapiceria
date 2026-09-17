@@ -41,7 +41,6 @@
         <li><a href="#servicios" class="nav__link">Servicios</a></li>
         <li><a href="#transformaciones" class="nav__link">Antes y después</a></li>
         <li><a href="#trabajos" class="nav__link">Trabajos</a></li>
-        <li><a href="#telas" class="nav__link">Telas</a></li>
         <li><a href="#contacto" class="nav__link">Contacto</a></li>
       </ul>
       <div class="nav__foot">
@@ -113,8 +112,8 @@
 <!-- ============ MARQUEE ============ -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
-    <span>Sofás</span><i>✦</i><span>Cabeceros</span><i>✦</i><span>Chester</span><i>✦</i><span>Chaise longue</span><i>✦</i><span>Orejeros</span><i>✦</i><span>Sillas de comedor</span><i>✦</i><span>Rinconeras</span><i>✦</i><span>Butacas</span><i>✦</i><span>Mecedoras</span><i>✦</i><span>Pufs</span><i>✦</i><span>Caravanas</span><i>✦</i>
-    <span>Sofás</span><i>✦</i><span>Cabeceros</span><i>✦</i><span>Chester</span><i>✦</i><span>Chaise longue</span><i>✦</i><span>Orejeros</span><i>✦</i><span>Sillas de comedor</span><i>✦</i><span>Rinconeras</span><i>✦</i><span>Butacas</span><i>✦</i><span>Mecedoras</span><i>✦</i><span>Pufs</span><i>✦</i><span>Caravanas</span><i>✦</i>
+    <div class="marquee__group"><span>Sofás</span><i>✦</i><span>Cabeceros</span><i>✦</i><span>Chester</span><i>✦</i><span>Chaise longue</span><i>✦</i><span>Orejeros</span><i>✦</i><span>Sillas de comedor</span><i>✦</i><span>Rinconeras</span><i>✦</i><span>Butacas</span><i>✦</i><span>Mecedoras</span><i>✦</i><span>Pufs</span><i>✦</i><span>Caravanas</span><i>✦</i></div>
+    <div class="marquee__group"><span>Sofás</span><i>✦</i><span>Cabeceros</span><i>✦</i><span>Chester</span><i>✦</i><span>Chaise longue</span><i>✦</i><span>Orejeros</span><i>✦</i><span>Sillas de comedor</span><i>✦</i><span>Rinconeras</span><i>✦</i><span>Butacas</span><i>✦</i><span>Mecedoras</span><i>✦</i><span>Pufs</span><i>✦</i><span>Caravanas</span><i>✦</i></div>
   </div>
 </div>
 
@@ -251,38 +250,103 @@
       <p class="eyebrow reveal"><span class="dot"></span> Antes y después</p>
       <h2 class="h2 reveal" data-delay="1">Arrastre y vea la <em>transformación</em></h2>
       <p class="section-head__lead reveal" data-delay="2">
-        Mismos muebles, otra vida. Mueva el tirador para comparar el estado original con el resultado final.
+        Mismos muebles, otra vida. Mueva el tirador de cada foto para comparar, y deslice hacia la derecha para ver más.
       </p>
     </header>
 
     <div class="compare__stage reveal" data-delay="2">
-      <div class="ba" id="ba" data-value="50">
-        <img class="ba__img ba__img--after" id="baAfter" src="img/ba1-despues.jpg" alt="Sillas de comedor después del tapizado">
-        <div class="ba__clip" id="baClip">
-          <img class="ba__img ba__img--before" id="baBefore" src="img/ba1-antes.jpg" alt="Sillas de comedor antes del tapizado">
-        </div>
-        <span class="ba__label ba__label--before">Antes</span>
-        <span class="ba__label ba__label--after">Después</span>
-        <button class="ba__handle" id="baHandle" type="button" role="slider"
-                aria-label="Comparador antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7 4 12l5 5M15 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+      <div class="compare__rail" id="baRail" tabindex="0" aria-label="Transformaciones, deslice para ver más">
+        <article class="ba-card">
+          <div class="ba" style="--v:50%">
+            <img class="ba__img ba__img--after" src="img/ba1-despues.jpg" alt="Sillas de comedor después del tapizado">
+            <img class="ba__img ba__img--before" src="img/ba1-antes.jpg" alt="Sillas de comedor antes del tapizado">
+            <span class="ba__label ba__label--before">Antes</span>
+            <span class="ba__label ba__label--after">Después</span>
+            <button class="ba__handle" type="button" role="slider"
+                    aria-label="Comparar Sillas de comedor: antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7 4 12l5 5M15 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="ba-card__title"><strong>Sillas de comedor</strong> · Restauración completa</p>
+        </article>
+        <article class="ba-card">
+          <div class="ba" style="--v:50%">
+            <img class="ba__img ba__img--after" src="img/ba2-despues.jpg" alt="Sofá chaise longue después del tapizado">
+            <img class="ba__img ba__img--before" src="img/ba2-antes.jpg" alt="Sofá chaise longue antes del tapizado">
+            <span class="ba__label ba__label--before">Antes</span>
+            <span class="ba__label ba__label--after">Después</span>
+            <button class="ba__handle" type="button" role="slider"
+                    aria-label="Comparar Sofá chaise longue: antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7 4 12l5 5M15 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="ba-card__title"><strong>Sofá chaise longue</strong> · Tapizado integral</p>
+        </article>
+        <article class="ba-card">
+          <div class="ba" style="--v:50%">
+            <img class="ba__img ba__img--after" src="img/ba3-despues.jpg" alt="Sillón orejero después del tapizado">
+            <img class="ba__img ba__img--before" src="img/ba3-antes.jpg" alt="Sillón orejero antes del tapizado">
+            <span class="ba__label ba__label--before">Antes</span>
+            <span class="ba__label ba__label--after">Después</span>
+            <button class="ba__handle" type="button" role="slider"
+                    aria-label="Comparar Sillón orejero: antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7 4 12l5 5M15 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="ba-card__title"><strong>Sillón orejero</strong> · Cambio de tela y relleno</p>
+        </article>
+        <article class="ba-card">
+          <div class="ba" style="--v:50%">
+            <img class="ba__img ba__img--after" src="img/ba4-despues.jpg" alt="Sofá de piel después del tapizado" loading="lazy">
+            <img class="ba__img ba__img--before" src="img/ba4-antes.jpg" alt="Sofá de piel antes del tapizado" loading="lazy">
+            <span class="ba__label ba__label--before">Antes</span>
+            <span class="ba__label ba__label--after">Después</span>
+            <button class="ba__handle" type="button" role="slider"
+                    aria-label="Comparar Sofá de piel: antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7 4 12l5 5M15 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="ba-card__title"><strong>Sofá de piel</strong> · Renovación completa</p>
+        </article>
+        <article class="ba-card">
+          <div class="ba" style="--v:50%">
+            <img class="ba__img ba__img--after" src="img/ba5-despues.jpg" alt="Sofá de salón después del tapizado" loading="lazy">
+            <img class="ba__img ba__img--before" src="img/ba5-antes.jpg" alt="Sofá de salón antes del tapizado" loading="lazy">
+            <span class="ba__label ba__label--before">Antes</span>
+            <span class="ba__label ba__label--after">Después</span>
+            <button class="ba__handle" type="button" role="slider"
+                    aria-label="Comparar Sofá de salón: antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7 4 12l5 5M15 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="ba-card__title"><strong>Sofá de salón</strong> · Cojines nuevos a medida</p>
+        </article>
+        <article class="ba-card">
+          <div class="ba" style="--v:50%">
+            <img class="ba__img ba__img--after" src="img/ba6-despues.jpg" alt="Sillón relax después del tapizado" loading="lazy">
+            <img class="ba__img ba__img--before" src="img/ba6-antes.jpg" alt="Sillón relax antes del tapizado" loading="lazy">
+            <span class="ba__label ba__label--before">Antes</span>
+            <span class="ba__label ba__label--after">Después</span>
+            <button class="ba__handle" type="button" role="slider"
+                    aria-label="Comparar Sillón relax: antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7 4 12l5 5M15 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="ba-card__title"><strong>Sillón relax</strong> · Reconstrucción y tapizado</p>
+        </article>
       </div>
 
-      <div class="compare__meta">
-        <p class="compare__title" id="baTitle">Sillas de comedor · Restauración completa</p>
+      <div class="compare__controls">
+        <div class="compare__dots" id="baDots" role="tablist" aria-label="Elegir transformación"></div>
         <div class="compare__nav">
-          <button class="icon-btn icon-btn--outline" type="button" id="baPrev" aria-label="Transformación anterior">
+          <button class="icon-btn icon-btn--outline" type="button" id="baPrev" aria-label="Ver transformaciones anteriores">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <span class="compare__count"><b id="baIndex">1</b> / 6</span>
-          <button class="icon-btn icon-btn--outline" type="button" id="baNext" aria-label="Siguiente transformación">
+          <button class="icon-btn icon-btn--outline" type="button" id="baNext" aria-label="Ver más transformaciones">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
       </div>
-
-      <div class="compare__dots" id="baDots" role="tablist" aria-label="Elegir transformación"></div>
     </div>
   </div>
 </section>
@@ -335,51 +399,15 @@
     <p class="reveal" data-delay="1">Garantizamos la calidad de nuestros trabajos.</p>
   </div>
   <div class="logos" aria-label="Clientes">
-    <div class="logos__track">
-      <img src="img/cliente-palco.jpg" alt="El Palco de las Esquinas" loading="lazy">
-      <img src="img/cliente-hide.jpg" alt="Hide Club" loading="lazy">
-      <img src="img/cliente-junquera.jpg" alt="La Junquera" loading="lazy">
-      <img src="img/cliente-mafia.jpg" alt="La Mafia se sienta a la mesa" loading="lazy">
-      <img src="img/cliente-urban.jpg" alt="Urban Cafe" loading="lazy">
-      <img src="img/cliente-palco.jpg" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/cliente-hide.jpg" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/cliente-junquera.jpg" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/cliente-mafia.jpg" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/cliente-urban.jpg" alt="" aria-hidden="true" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<!-- ============ TELAS ============ -->
-<section class="section fabrics" id="telas">
-  <div class="container fabrics__grid">
-    <div class="fabrics__text">
-      <p class="eyebrow reveal"><span class="dot"></span> Materiales</p>
-      <h2 class="h2 reveal" data-delay="1">Variedad de <em>telas</em><br>de la más alta calidad</h2>
-      <p class="lead reveal" data-delay="2">
-        Eskais, polipieles, ante, chenillas, rasos, courtisan, yutes, terciopelos y microfibras,
-        en una enorme gama de colores y estampados resistentes al uso diario.
-      </p>
-
-      <div class="swatches reveal" data-delay="3" aria-hidden="true">
-        <span style="--c:#2f4858"></span><span style="--c:#8d5524"></span><span style="--c:#c99a5b"></span>
-        <span style="--c:#7a8b6f"></span><span style="--c:#b5495b"></span><span style="--c:#d8cfc0"></span>
-        <span style="--c:#3c3a6b"></span><span style="--c:#1f1c1a"></span>
-      </div>
-
-      <ul class="brands reveal" data-delay="4">
-        <li>RUSTIKA®</li><li>NIRVANA®</li><li>VISUAL®</li>
-        <li>SAFEFRONT®</li><li>VINTAGE®</li><li>Aqua Clean</li>
+    <div class="logos__track" id="logosTrack">
+      <ul class="logos__group">
+        <li><img src="img/cliente-palco.jpg" alt="El Palco de las Esquinas" loading="lazy"></li>
+        <li><img src="img/cliente-hide.jpg" alt="Hide Club" loading="lazy"></li>
+        <li><img src="img/cliente-junquera.jpg" alt="La Junquera" loading="lazy"></li>
+        <li><img src="img/cliente-mafia.jpg" alt="La Mafia se sienta a la mesa" loading="lazy"></li>
+        <li><img src="img/cliente-urban.jpg" alt="Urban Cafe" loading="lazy"></li>
       </ul>
-      <a class="link-arrow reveal" data-delay="5" href="#contacto">
-        Solicitar muestrario
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
     </div>
-
-    <figure class="fabrics__media reveal" data-delay="2">
-      <img src="img/telas.jpg" alt="Muestrario de telas y tejidos para tapicería" loading="lazy" data-parallax="-0.05">
-    </figure>
   </div>
 </section>
 
@@ -563,6 +591,9 @@
     <p>© <span id="year">2025</span> Tapicerías Deluxe. Todos los derechos reservados.</p>
     <p class="footer__legal">
       <a href="#">Política de cookies</a><span>·</span><a href="#">Política de privacidad</a>
+    </p>
+    <p class="footer__credit">
+      Creado por <a href="https://www.linkedin.com/in/ruben-palacio-sisamon-4bb30425a/" target="_blank" rel="noopener">Ruben Palacio</a>
     </p>
   </div>
 </footer>

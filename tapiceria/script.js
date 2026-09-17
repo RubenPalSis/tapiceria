@@ -165,95 +165,123 @@
     update();
   }
 
-  /* --------------------------------------------------- Antes y después */
-  const TRANSFORMS = [
-    { before: 'img/ba1-antes.jpg', after: 'img/ba1-despues.jpg', title: 'Sillas de comedor · Restauración completa' },
-    { before: 'img/ba2-antes.jpg', after: 'img/ba2-despues.jpg', title: 'Sofá chaise longue · Tapizado integral' },
-    { before: 'img/ba3-antes.jpg', after: 'img/ba3-despues.jpg', title: 'Sillón orejero · Cambio de tela y relleno' },
-    { before: 'img/ba4-antes.jpg', after: 'img/ba4-despues.jpg', title: 'Sofá de piel · Renovación completa' },
-    { before: 'img/ba5-antes.jpg', after: 'img/ba5-despues.jpg', title: 'Sofá de salón · Cojines nuevos a medida' },
-    { before: 'img/ba6-antes.jpg', after: 'img/ba6-despues.jpg', title: 'Sillón relax · Reconstrucción y tapizado' }
-  ];
+  /* ---------------------------------------- Antes y después (carrusel) */
+  // Cada tarjeta lleva su propio tirador; el recorte es puro CSS (--v).
+  $$('.ba').forEach(ba => {
+    const handle = $('.ba__handle', ba);
+    if (!handle) return;
 
-  const ba       = $('#ba');
-  const baClip   = $('#baClip');
-  const baHandle = $('#baHandle');
-  const baBefore = $('#baBefore');
-  const baAfter  = $('#baAfter');
-  const baTitle  = $('#baTitle');
-  const baIndex  = $('#baIndex');
-  const baDots   = $('#baDots');
-  let current = 0;
-
-  if (ba) {
-    // Puntos de navegación
-    TRANSFORMS.forEach((t, i) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.setAttribute('role', 'tab');
-      dot.setAttribute('aria-label', t.title);
-      dot.addEventListener('click', () => showTransform(i));
-      baDots.appendChild(dot);
-    });
-
-    const sizeBefore = () => { baBefore.style.width = ba.clientWidth + 'px'; };
-    window.addEventListener('resize', sizeBefore);
-
-    function showTransform(i) {
-      current = (i + TRANSFORMS.length) % TRANSFORMS.length;
-      const t = TRANSFORMS[current];
-      baBefore.src = t.before;
-      baAfter.src  = t.after;
-      baBefore.alt = t.title + ' (antes)';
-      baAfter.alt  = t.title + ' (después)';
-      baTitle.textContent = t.title;
-      baIndex.textContent = current + 1;
-      $$('button', baDots).forEach((d, n) => {
-        d.classList.toggle('is-active', n === current);
-        d.setAttribute('aria-selected', n === current ? 'true' : 'false');
-      });
-      setSplit(50);
-    }
-
-    function setSplit(pct) {
+    const setSplit = pct => {
       const v = Math.max(0, Math.min(100, pct));
-      baClip.style.width = v + '%';
-      baHandle.style.left = v + '%';
-      baHandle.setAttribute('aria-valuenow', Math.round(v));
-      ba.dataset.value = v;
-    }
-
-    const pointerSplit = clientX => {
+      ba.style.setProperty('--v', v + '%');
+      handle.setAttribute('aria-valuenow', Math.round(v));
+    };
+    const fromPointer = clientX => {
       const rect = ba.getBoundingClientRect();
       setSplit(((clientX - rect.left) / rect.width) * 100);
     };
 
-    // El arrastre se escucha en la ventana: así no se corta al salir de la imagen.
     let dragging = false;
     ba.addEventListener('pointerdown', e => {
+      // En táctil sólo arrastra el tirador: el resto de la tarjeta se reserva
+      // para deslizar el carrusel con el dedo.
+      if (e.pointerType === 'touch' && !e.target.closest('.ba__handle')) return;
       dragging = true;
-      pointerSplit(e.clientX);
+      fromPointer(e.clientX);
       e.preventDefault();
     });
-    window.addEventListener('pointermove', e => { if (dragging) pointerSplit(e.clientX); });
-    window.addEventListener('pointerup', () => { dragging = false; });
-    window.addEventListener('pointercancel', () => { dragging = false; });
+    window.addEventListener('pointermove', e => { if (dragging) fromPointer(e.clientX); }, { passive: true });
+    const stopDrag = () => { dragging = false; };
+    window.addEventListener('pointerup', stopDrag);
+    window.addEventListener('pointercancel', stopDrag);
 
-    baHandle.addEventListener('keydown', e => {
+    handle.addEventListener('keydown', e => {
       const step = e.shiftKey ? 10 : 4;
-      const v = parseFloat(ba.dataset.value) || 50;
+      const v = parseFloat(ba.style.getPropertyValue('--v')) || 50;
       if (e.key === 'ArrowLeft')  { setSplit(v - step); e.preventDefault(); }
       if (e.key === 'ArrowRight') { setSplit(v + step); e.preventDefault(); }
-      if (e.key === 'Home')       { setSplit(0);  e.preventDefault(); }
+      if (e.key === 'Home')       { setSplit(0);   e.preventDefault(); }
       if (e.key === 'End')        { setSplit(100); e.preventDefault(); }
     });
+  });
 
-    $('#baPrev')?.addEventListener('click', () => showTransform(current - 1));
-    $('#baNext')?.addEventListener('click', () => showTransform(current + 1));
+  const rail = $('#baRail');
+  if (rail) {
+    const cards   = $$('.ba-card', rail);
+    const dotsBox = $('#baDots');
+    const baPrev  = $('#baPrev');
+    const baNext  = $('#baNext');
 
-    sizeBefore();
-    showTransform(0);
-    window.addEventListener('load', sizeBefore);
+    // Ancho de una tarjeta + hueco: lo que avanza cada clic.
+    const step = () => (cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : rail.clientWidth);
+    const scrollTo = left => rail.scrollTo({ left, behavior: reduceMotion ? 'auto' : 'smooth' });
+
+    cards.forEach((card, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Transformación ' + (i + 1));
+      dot.addEventListener('click', () => scrollTo(card.offsetLeft));
+      dotsBox.appendChild(dot);
+    });
+
+    const dots = $$('button', dotsBox);
+    let raf = 0;
+
+    function syncRail() {
+      const st = step() || 1;
+      const i  = Math.max(0, Math.min(cards.length - 1, Math.round(rail.scrollLeft / st)));
+      dots.forEach((d, n) => {
+        const on = n === i;
+        d.classList.toggle('is-active', on);
+        d.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      const max = rail.scrollWidth - rail.clientWidth - 1;
+      baPrev.disabled = rail.scrollLeft <= 1;
+      baNext.disabled = rail.scrollLeft >= max;
+    }
+
+    rail.addEventListener('scroll', () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = 0; syncRail(); });
+    }, { passive: true });
+    window.addEventListener('resize', syncRail);
+
+    baPrev.addEventListener('click', () => rail.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    baNext.addEventListener('click', () => rail.scrollBy({ left:  step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    syncRail();
+  }
+
+  /* ------------------------------------- Logos: rueda que no se acaba */
+  const logosTrack = $('#logosTrack');
+  if (logosTrack) {
+    const group = $('.logos__group', logosTrack);
+    const SPEED = 46; // px por segundo
+
+    function buildLogos() {
+      $$('.logos__group', logosTrack).slice(1).forEach(n => n.remove());
+      const w = group.getBoundingClientRect().width;
+      const viewport = logosTrack.parentElement.clientWidth;
+      if (!w || !viewport) return;
+      // Copias suficientes para cubrir la pantalla más un grupo: al saltar de
+      // vuelta la costura cae fuera de la vista y el giro parece continuo.
+      const copies = Math.ceil(viewport / w) + 1;
+      for (let i = 1; i < copies; i++) {
+        const clone = group.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        logosTrack.appendChild(clone);
+      }
+      logosTrack.style.setProperty('--shift', w + 'px');
+      logosTrack.style.setProperty('--dur', (w / SPEED).toFixed(2) + 's');
+    }
+
+    let logosTimer;
+    buildLogos();
+    window.addEventListener('load', buildLogos);
+    window.addEventListener('resize', () => {
+      clearTimeout(logosTimer);
+      logosTimer = setTimeout(buildLogos, 200);
+    });
   }
 
   /* ----------------------------------------------- Galería: filtros */
