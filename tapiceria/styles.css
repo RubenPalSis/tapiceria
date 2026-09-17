@@ -90,6 +90,8 @@ ul{list-style:none;padding:0}
 .h3{font-size:clamp(1.6rem,1.2rem + 1.6vw,2.4rem)}
 .h2 em,.h3 em{font-style:italic;color:var(--brand);font-variation-settings:"SOFT" 40}
 .lead{font-size:clamp(1.05rem,1rem + .35vw,1.25rem);color:var(--ink-2)}
+/* :where() no suma especificidad: cualquier regla propia sigue mandando. */
+:where(.intro__text,.coverage__grid) :where(.h2,.lead,p) + p{margin-top:.9rem}
 p{color:var(--ink-2)}
 p strong{color:var(--ink);font-weight:600}
 
@@ -348,8 +350,9 @@ p strong{color:var(--ink);font-weight:600}
 .card__body h3{font-family:var(--ff-display);font-weight:400;font-size:clamp(1.3rem,1.1rem + .7vw,1.85rem);letter-spacing:-.015em;margin-bottom:.5rem}
 .card__body p{color:rgba(255,255,255,.76);font-size:.94rem;line-height:1.6;max-width:52ch}
 .card--wide .card__body p{max-width:62ch}
+/* Anclado a la tarjeta, no al cuerpo: así no se recorta cuando el texto es largo. */
 .card__num{
-  position:absolute;top:calc(-1 * clamp(1.3rem,2.2vw,2rem) - .2rem);right:clamp(1.3rem,2.2vw,2rem);
+  position:absolute;z-index:1;top:clamp(1.1rem,2vw,1.6rem);right:clamp(1.2rem,2.2vw,1.8rem);
   font-family:var(--ff-display);font-size:.8rem;letter-spacing:.2em;color:var(--brand-2);
 }
 .card__tag{
@@ -711,6 +714,7 @@ body.no-scroll{overflow:hidden}
   /* Intro */
   .intro__grid{gap:1.8rem}
   .intro__media{padding-bottom:2.4rem}
+  .intro__img--main{aspect-ratio:1}
   .intro__img--float{right:0;width:44%}
   .intro__badge{top:.8rem;left:.8rem;padding:.45rem .9rem .45rem .65rem}
   .intro__badge strong{font-size:1.6rem}
@@ -769,7 +773,8 @@ body.no-scroll{overflow:hidden}
   .footer{padding-top:2.6rem}
   .footer__grid{grid-template-columns:1fr;gap:1.7rem}
   .footer__col ul{gap:.45rem}
-  .footer__bar{margin-top:2rem;padding-block:1.2rem;flex-direction:column;gap:.5rem;align-items:flex-start}
+  /* Hueco inferior para que el botón flotante no tape el texto. */
+  .footer__bar{margin-top:2rem;padding:1.2rem 0 4.5rem;flex-direction:column;gap:.5rem;align-items:flex-start}
 
   /* Flotantes: sin etiqueta, para no tapar el contenido */
   .fab--wa span,.fab--wa.is-wide span{display:none}
