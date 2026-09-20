@@ -34,6 +34,7 @@
   const scrim  = $('#navScrim');
   const progressBar = $('#progressBar');
   const toTop  = $('#toTop');
+  const waFab  = $('.fab--wa');
   let lastY = window.scrollY;
 
   function onScroll() {
@@ -47,6 +48,8 @@
 
     if (progressBar) progressBar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
     toTop?.classList.toggle('is-on', y > 700);
+    // La píldora de WhatsApp se despliega al dejar atrás el hero.
+    waFab?.classList.toggle('is-wide', y > window.innerHeight * 0.75);
   }
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -376,18 +379,20 @@
 
     const missing = [];
     [['nombre', 'su nombre'], ['telefono', 'su teléfono'], ['mensaje', 'un mensaje']].forEach(([id, label]) => {
-      const field = $('#' + id).closest('.field');
+      const field = $('#' + id).closest('.c-field') || $('#' + id).closest('.field');
       const empty = !data[id];
-      field.classList.toggle('has-error', empty);
+      field?.classList.toggle('has-error', empty);
       if (empty) missing.push(label);
     });
 
     if (missing.length) {
+      formError.style.display = 'block';
       formError.hidden = false;
       formError.textContent = 'Por favor, indique ' + missing.join(', ') + '.';
       $('.has-error input, .has-error textarea')?.focus();
       return;
     }
+    formError.style.display = 'none';
     formError.hidden = true;
 
     const cuerpo =
@@ -432,15 +437,22 @@
       .then(res => {
         if (res.ok) {
           form.reset();
+          formError.style.display = 'none';
           formError.hidden = true;
           form.style.display = 'none';
-          $('#formSuccess').hidden = false;
+          const successEl = $('#formSuccess');
+          if (successEl) {
+            successEl.style.display = 'flex';
+            successEl.hidden = false;
+            successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
           // Google Ads conversion
           if (typeof gtag_report_conversion === 'function') {
             gtag_report_conversion();
           }
         } else {
           return res.json().then(d => {
+            formError.style.display = 'block';
             formError.hidden = false;
             formError.textContent = d.errors
               ? d.errors.map(e => e.message).join(', ')
@@ -449,6 +461,7 @@
         }
       })
       .catch(() => {
+        formError.style.display = 'block';
         formError.hidden = false;
         formError.textContent = 'Error de conexión. Inténtelo de nuevo.';
       })
@@ -459,7 +472,13 @@
   });
 
   $$('#contactForm input, #contactForm textarea').forEach(input => {
-    input.addEventListener('input', () => input.closest('.field').classList.remove('has-error'));
+    input.addEventListener('input', () => {
+      (input.closest('.c-field') || input.closest('.field'))?.classList.remove('has-error');
+      if (formError) {
+        formError.style.display = 'none';
+        formError.hidden = true;
+      }
+    });
   });
 
   /* ------------------------------------------------------------- Varios */

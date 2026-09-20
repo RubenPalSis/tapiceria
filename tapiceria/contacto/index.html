@@ -145,7 +145,6 @@
       <ul class="nav__list">
         <li><a href="../" class="nav__link">Inicio</a></li>
         <li><a href="../servicios/" class="nav__link">Servicios</a></li>
-        <li><a href="../#transformaciones" class="nav__link">Antes y después</a></li>
         <li><a href="../trabajos/" class="nav__link">Trabajos</a></li>
         <li><a href="./" class="nav__link is-active">Contacto</a></li>
       </ul>
@@ -188,76 +187,147 @@
 </section>
 
 <!-- ============ SECCIÓN CONTACTO / FORMULARIO ============ -->
-<section class="section contact" id="contacto" style="padding-top:1rem;">
+<section class="section contact" id="contacto">
   <div class="container">
-    <div class="contact__grid">
-      <form class="form reveal" id="contactForm" novalidate>
-        <input type="hidden" name="_subject" value="Nuevo presupuesto desde la web">
-        <div class="field">
-          <input type="text" id="nombre" name="nombre" placeholder=" " required>
-          <label for="nombre">Nombre y apellidos</label>
+    <div class="contact__layout">
+      <!-- Columna Izquierda: Información y Vías Directas -->
+      <div class="contact__info reveal">
+        <div class="contact__info-header">
+          <span class="badge-accent">Atención directa e inmediata</span>
+          <h2 class="h3">¿Tiene dudas o necesita presupuesto?</h2>
+          <p class="contact__info-desc">
+            Nos desplazamos a su domicilio en Zaragoza con el catálogo de telas sin ningún coste ni compromiso. O si lo prefiere, envíenos una foto de su mueble y le daremos una estimación rápida.
+          </p>
         </div>
-        <div class="field field--half">
-          <input type="tel" id="telefono" name="telefono" placeholder=" " required>
-          <label for="telefono">Teléfono</label>
+
+        <div class="contact__channels">
+          <a class="c-channel c-channel--wa" href="https://wa.me/34654680667" target="_blank" rel="noopener">
+            <div class="c-channel__icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.5-1.2-2.9s.7-2 1-2.3c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5-.3.3c-.1.1-.2.3 0 .5.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.8-.9c.2-.2.3-.2.5-.1l2 1c.2.1.4.2.4.3.1.2.1.6-.1 1.3Z"/></svg>
+            </div>
+            <div class="c-channel__details">
+              <span class="c-channel__tag">Opción más rápida</span>
+              <strong>WhatsApp directo</strong>
+              <span>654 68 06 67</span>
+            </div>
+            <span class="c-channel__arrow">→</span>
+          </a>
+
+          <a class="c-channel" href="tel:+34654680667">
+            <div class="c-channel__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6L16.5 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.7a2 2 0 0 1 2-2.2Z" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="c-channel__details">
+              <span class="c-channel__tag">Llamada telefónica</span>
+              <strong>Teléfono directo</strong>
+              <span>+34 654 68 06 67</span>
+            </div>
+            <span class="c-channel__arrow">→</span>
+          </a>
+
+          <a class="c-channel" href="mailto:tapiceriasdeluxe@gmail.com">
+            <div class="c-channel__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.8 6.8 7.3 5.2a1.5 1.5 0 0 0 1.8 0l7.3-5.2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="c-channel__details">
+              <span class="c-channel__tag">Correo electrónico</span>
+              <strong>Email de consultas</strong>
+              <span>tapiceriasdeluxe@gmail.com</span>
+            </div>
+            <span class="c-channel__arrow">→</span>
+          </a>
         </div>
-        <div class="field field--half">
-          <input type="email" id="email" name="email" placeholder=" ">
-          <label for="email">Email (opcional)</label>
+
+        <div class="contact__social-strip">
+          <span>Síganos en redes:</span>
+          <a href="https://www.facebook.com/tapiceriasdeluxe.simon" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.5 1.6-1.5h1.6V3.3A22 22 0 0 0 14.4 3c-2.4 0-4 1.5-4 4.2v2.6H7.7V13h2.7v8h3.1Z"/></svg>
+            Facebook
+          </a>
+          <a href="https://www.instagram.com/tapiceriasdeluxe" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
         </div>
-        <div class="field">
-          <select id="servicio" name="servicio">
-            <option>Tapizado de sofás</option>
-            <option>Tapizado de sillas</option>
-            <option>Tapizado de muebles</option>
-            <option>Reparación y restauración</option>
-            <option>Locales y comercios</option>
-            <option>Cabeceros a medida</option>
-            <option>Rellenos y espumas</option>
-            <option>Otro proyecto</option>
-          </select>
-          <label for="servicio" class="label--static">Servicio que necesita</label>
-        </div>
-        <div class="field">
-          <textarea id="mensaje" name="mensaje" rows="4" placeholder=" " required></textarea>
-          <label for="mensaje">Describa su mueble o consulta</label>
-        </div>
-        <p class="form__error" id="formError" role="alert" hidden></p>
-        <div class="form__actions">
-          <button class="btn btn--solid btn--lg" type="submit" data-method="whatsapp">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.5-1.2-2.9s.7-2 1-2.3c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5-.3.3c-.1.1-.2.3 0 .5.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.8-.9c.2-.2.3-.2.5-.1l2 1c.2.1.4.2.4.3.1.2.1.6-.1 1.3Z"/></svg>
-            Enviar por WhatsApp
-          </button>
-          <button class="btn btn--line btn--lg" type="submit" data-method="email">Enviar por email</button>
-        </div>
-        <p class="form__hint">WhatsApp abre la app con el mensaje preparado. Email envía el formulario directamente.</p>
-      </form>
-      <div class="form__success" id="formSuccess" role="status" hidden>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <p><strong>¡Mensaje enviado!</strong><br>Le responderemos lo antes posible. Si lo prefiere, también puede contactarnos por <a href="https://wa.me/34654680667">WhatsApp</a>.</p>
       </div>
 
-      <div class="contact__cards">
-        <a class="ccard reveal" data-delay="1" href="tel:+34654680667">
-          <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6L16.5 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.7a2 2 0 0 1 2-2.2Z" stroke-linejoin="round"/></svg></span>
-          <div><small>Teléfono directo</small><strong>+34 654 68 06 67</strong></div>
-        </a>
-        <a class="ccard reveal" data-delay="2" href="https://wa.me/34654680667" target="_blank" rel="noopener">
-          <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.5-1.2-2.9s.7-2 1-2.3c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5-.3.3c-.1.1-.2.3 0 .5.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.8-.9c.2-.2.3-.2.5-.1l2 1c.2.1.4.2.4.3.1.2.1.6-.1 1.3Z"/></svg></span>
-          <div><small>WhatsApp rápido</small><strong>654 68 06 67</strong></div>
-        </a>
-        <a class="ccard reveal" data-delay="3" href="mailto:tapiceriasdeluxe@gmail.com">
-          <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.8 6.8 7.3 5.2a1.5 1.5 0 0 0 1.8 0l7.3-5.2" stroke-linecap="round"/></svg></span>
-          <div><small>Correo electrónico</small><strong>tapiceriasdeluxe@gmail.com</strong></div>
-        </a>
-        <a class="ccard reveal" data-delay="4" href="https://www.facebook.com/tapiceriasdeluxe.simon" target="_blank" rel="noopener">
-          <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.5 1.6-1.5h1.6V3.3A22 22 0 0 0 14.4 3c-2.4 0-4 1.5-4 4.2v2.6H7.7V13h2.7v8h3.1Z"/></svg></span>
-          <div><small>Facebook</small><strong>/tapiceriasdeluxe.simon</strong></div>
-        </a>
-        <a class="ccard reveal" data-delay="5" href="https://www.instagram.com/tapiceriasdeluxe" target="_blank" rel="noopener">
-          <span class="ccard__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg></span>
-          <div><small>Instagram</small><strong>@tapiceriasdeluxe</strong></div>
-        </a>
+      <!-- Columna Derecha: Tarjeta del Formulario -->
+      <div class="contact__form-wrapper reveal" data-delay="1">
+        <form class="contact-card-form" id="contactForm" novalidate>
+          <input type="hidden" name="_subject" value="Nuevo presupuesto desde la web">
+          
+          <div class="contact-card-form__head">
+            <h3>Pida su presupuesto</h3>
+            <p>Rellene el formulario y le respondemos en el mismo día sin compromiso.</p>
+          </div>
+
+          <div class="c-form-grid">
+            <div class="c-field c-field--full">
+              <label for="nombre">Nombre y apellidos *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej. Carmen González" required>
+            </div>
+
+            <div class="c-field c-field--half">
+              <label for="telefono">Teléfono *</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Ej. 654 00 00 00" required>
+            </div>
+
+            <div class="c-field c-field--half">
+              <label for="email">Email (opcional)</label>
+              <input type="email" id="email" name="email" placeholder="carmen@ejemplo.com">
+            </div>
+
+            <div class="c-field c-field--full">
+              <label for="servicio">Servicio o tipo de mueble</label>
+              <div class="c-select-wrap">
+                <select id="servicio" name="servicio">
+                  <option>Tapizado de sofás</option>
+                  <option>Tapizado de sillas</option>
+                  <option>Tapizado de muebles</option>
+                  <option>Reparación y restauración</option>
+                  <option>Locales y comercios</option>
+                  <option>Cabeceros a medida</option>
+                  <option>Rellenos y espumas</option>
+                  <option>Otro proyecto</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="c-field c-field--full">
+              <label for="mensaje">¿Qué necesita tapizar o reparar? *</label>
+              <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describa el mueble, medidas aproximadas o el tipo de tela que busca..." required></textarea>
+            </div>
+          </div>
+
+          <p class="form__error" id="formError" role="alert" style="display:none;"></p>
+
+          <div class="c-form-actions">
+            <button class="btn btn--solid btn--lg" type="submit" data-method="whatsapp">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.5-1.2-2.9s.7-2 1-2.3c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5-.3.3c-.1.1-.2.3 0 .5.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.8-.9c.2-.2.3-.2.5-.1l2 1c.2.1.4.2.4.3.1.2.1.6-.1 1.3Z"/></svg>
+              Enviar por WhatsApp
+            </button>
+            <button class="btn btn--line btn--lg" type="submit" data-method="email">
+              Enviar por email
+            </button>
+          </div>
+
+          <p class="c-form-hint">
+            <strong>WhatsApp:</strong> abre la aplicación con los datos listos para enviar.<br>
+            <strong>Email:</strong> envía la solicitud directamente a nuestro buzón.
+          </p>
+        </form>
+
+        <!-- Mensaje de confirmación: estrictamente oculto por defecto -->
+        <div class="form__success" id="formSuccess" role="status" style="display:none;">
+          <div class="form__success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="28" height="28"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h4>¡Solicitud enviada correctamente!</h4>
+            <p>Hemos recibido sus datos en el taller. Nos pondremos en contacto con usted hoy mismo para darle presupuesto o concertar una visita gratuita.</p>
+            <p class="form__success-wa">Si lo prefiere, también puede contactarnos directamente por <a href="https://wa.me/34654680667" target="_blank" rel="noopener">WhatsApp al 654 68 06 67</a>.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -375,6 +445,10 @@
 </footer>
 
 <!-- ============ FLOATING ============ -->
+<a class="fab fab--wa" href="https://wa.me/34654680667?text=Hola%2C%20quer%C3%ADa%20pedir%20un%20presupuesto" target="_blank" rel="noopener" aria-label="Pídeme presupuesto por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.5-1.2-2.9s.7-2 1-2.3c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5-.3.3c-.1.1-.2.3 0 .5.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.8-.9c.2-.2.3-.2.5-.1l2 1c.2.1.4.2.4.3.1.2.1.6-.1 1.3Z"/></svg>
+  <span>Pide presupuesto</span>
+</a>
 <button class="fab fab--top" id="toTop" type="button" aria-label="Volver arriba">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 19V6M6 12l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
