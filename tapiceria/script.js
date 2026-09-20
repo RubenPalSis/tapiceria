@@ -414,9 +414,45 @@
     }
 
     if (method === 'email') {
-      window.location.href =
-        `mailto:tapiceriasdeluxe@gmail.com?subject=${encodeURIComponent('Presupuesto: ' + data.servicio)}` +
-        `&body=${encodeURIComponent(cuerpo)}`;
+      const btns = $$('#contactForm [type="submit"]');
+      btns.forEach(b => b.disabled = true);
+
+      fetch('https://formspree.io/f/xaenqpvl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          nombre:   data.nombre,
+          telefono: data.telefono,
+          email:    data.email,
+          servicio: data.servicio,
+          mensaje:  data.mensaje,
+          _subject: 'Nuevo presupuesto: ' + data.servicio
+        })
+      })
+      .then(res => {
+        if (res.ok) {
+          form.reset();
+          formError.hidden = true;
+          form.style.display = 'none';
+          $('#formSuccess').hidden = false;
+          // Google Ads conversion
+          if (typeof gtag_report_conversion === 'function') {
+            gtag_report_conversion();
+          }
+        } else {
+          return res.json().then(d => {
+            formError.hidden = false;
+            formError.textContent = d.errors
+              ? d.errors.map(e => e.message).join(', ')
+              : 'Error al enviar. Inténtelo de nuevo.';
+          });
+        }
+      })
+      .catch(() => {
+        formError.hidden = false;
+        formError.textContent = 'Error de conexión. Inténtelo de nuevo.';
+      })
+      .finally(() => btns.forEach(b => b.disabled = false));
     } else {
       window.open(`https://wa.me/34654680667?text=${encodeURIComponent(cuerpo)}`, '_blank', 'noopener');
     }

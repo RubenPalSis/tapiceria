@@ -551,7 +551,15 @@ p strong{color:var(--ink);font-weight:600}
 .form__actions{grid-column:span 2;display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.3rem}
 .form__hint{grid-column:span 2;font-size:.82rem;color:var(--ink-2)}
 .form .btn--solid svg{width:19px;height:19px}
-
+.form__success{
+  display:flex;align-items:flex-start;gap:1rem;padding:2rem 1.5rem;
+  border-radius:var(--r-m);background:rgba(46,160,67,.08);border:1px solid rgba(46,160,67,.25);
+  color:var(--ink);animation:fadeIn .4s var(--ease);
+}
+.form__success svg{flex:none;color:#2ea043}
+.form__success p{margin:0;line-height:1.6}
+.form__success a{color:var(--brand);font-weight:600}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .contact__cards{display:grid;gap:.7rem}
 .ccard{
   display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--line-2);
