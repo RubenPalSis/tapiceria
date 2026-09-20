@@ -566,6 +566,33 @@ p strong{color:var(--ink);font-weight:600}
 .ccard small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
 .ccard strong{font-weight:600;font-size:.98rem;word-break:break-word}
 
+/* ---------- Breadcrumbs & Páginas interiores ---------- */
+.breadcrumbs{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;font-size:.85rem;color:var(--ink-2);margin-bottom:1.5rem}
+.breadcrumbs a{color:var(--ink-2);transition:color .25s}
+.breadcrumbs a:hover{color:var(--brand)}
+.breadcrumbs span[aria-hidden]{opacity:.4}
+.breadcrumbs span:last-child{color:var(--brand);font-weight:600}
+
+.page-hero{padding-top:clamp(7rem,12vw,9.5rem);padding-bottom:clamp(2.5rem,5vw,4.5rem);background:radial-gradient(ellipse at 80% -20%,var(--brand-soft) 0%,transparent 65%)}
+.page-hero .eyebrow{margin-bottom:.9rem}
+
+.prose{max-width:52rem;margin-inline:auto;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-l);padding:clamp(1.8rem,5vw,3.5rem);box-shadow:var(--shadow-s)}
+.prose h2{font-family:var(--ff-display);font-size:clamp(1.5rem,1.2rem + 1.2vw,2rem);margin-top:2.2rem;margin-bottom:.8rem;color:var(--ink)}
+.prose h3{font-family:var(--ff-display);font-size:1.25rem;margin-top:1.6rem;margin-bottom:.6rem;color:var(--ink)}
+.prose p{margin-bottom:1.1rem;line-height:1.75}
+.prose ul,.prose ol{margin-bottom:1.3rem;padding-left:1.5rem}
+.prose li{margin-bottom:.5rem;color:var(--ink-2);list-style:disc}
+.prose a{color:var(--brand);border-bottom:1px solid var(--brand-soft);transition:border-color .25s}
+.prose a:hover{border-color:var(--brand)}
+
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+.feature-box{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-m);padding:1.8rem;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+.feature-box:hover{transform:translateY(-3px);border-color:var(--brand);box-shadow:var(--shadow-m)}
+.feature-box__icon{width:46px;height:46px;display:grid;place-items:center;border-radius:12px;background:var(--brand-soft);color:var(--brand);margin-bottom:1.1rem}
+.feature-box__icon svg{width:22px;height:22px}
+.feature-box h3{font-family:var(--ff-display);font-size:1.28rem;margin-bottom:.5rem;color:var(--ink)}
+.feature-box p{font-size:.92rem;line-height:1.6}
+
 /* ---------- Footer ---------- */
 .footer{background:var(--ink);color:color-mix(in srgb,var(--bg) 72%,transparent);padding-top:clamp(3.5rem,7vw,5.5rem)}
 .footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:2.5rem}

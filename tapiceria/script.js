@@ -34,7 +34,6 @@
   const scrim  = $('#navScrim');
   const progressBar = $('#progressBar');
   const toTop  = $('#toTop');
-  const waFab  = $('.fab--wa');
   let lastY = window.scrollY;
 
   function onScroll() {
@@ -48,8 +47,6 @@
 
     if (progressBar) progressBar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
     toTop?.classList.toggle('is-on', y > 700);
-    // La píldora de WhatsApp se despliega al dejar atrás el hero.
-    waFab?.classList.toggle('is-wide', y > window.innerHeight * 0.75);
   }
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -102,6 +99,7 @@
   /* ------------------------------------------------ Sección activa en nav */
   const navLinks = $$('.nav__link');
   const sections = navLinks
+    .filter(link => link.getAttribute('href')?.startsWith('#'))
     .map(link => document.getElementById(link.getAttribute('href').slice(1)))
     .filter(Boolean);
 
@@ -109,7 +107,11 @@
     const spy = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        navLinks.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + entry.target.id));
+        navLinks.forEach(l => {
+          if (l.getAttribute('href')?.startsWith('#')) {
+            l.classList.toggle('is-active', l.getAttribute('href') === '#' + entry.target.id);
+          }
+        });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     sections.forEach(s => spy.observe(s));
@@ -217,6 +219,7 @@
     const scrollTo = left => rail.scrollTo({ left, behavior: reduceMotion ? 'auto' : 'smooth' });
 
     cards.forEach((card, i) => {
+      if (!dotsBox) return;
       const dot = document.createElement('button');
       dot.type = 'button';
       dot.setAttribute('role', 'tab');
@@ -225,7 +228,7 @@
       dotsBox.appendChild(dot);
     });
 
-    const dots = $$('button', dotsBox);
+    const dots = dotsBox ? $$('button', dotsBox) : [];
     let raf = 0;
 
     function syncRail() {
@@ -237,8 +240,8 @@
         d.setAttribute('aria-selected', on ? 'true' : 'false');
       });
       const max = rail.scrollWidth - rail.clientWidth - 1;
-      baPrev.disabled = rail.scrollLeft <= 1;
-      baNext.disabled = rail.scrollLeft >= max;
+      if (baPrev) baPrev.disabled = rail.scrollLeft <= 1;
+      if (baNext) baNext.disabled = rail.scrollLeft >= max;
     }
 
     rail.addEventListener('scroll', () => {
@@ -247,8 +250,8 @@
     }, { passive: true });
     window.addEventListener('resize', syncRail);
 
-    baPrev.addEventListener('click', () => rail.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
-    baNext.addEventListener('click', () => rail.scrollBy({ left:  step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    baPrev?.addEventListener('click', () => rail.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    baNext?.addEventListener('click', () => rail.scrollBy({ left:  step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
     syncRail();
   }
 
@@ -393,6 +396,22 @@
       `Teléfono: ${data.telefono}\n` +
       (data.email ? `Email: ${data.email}\n` : '') +
       `\n${data.mensaje}`;
+
+    // Hook de conversión preparado para Google Ads / Google Analytics 4 / GTM
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead', {
+        event_category: 'Contacto',
+        event_label: data.servicio,
+        method: method
+      });
+    }
+    if (Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({
+        event: 'lead_presupuesto',
+        servicio: data.servicio,
+        metodo_contacto: method
+      });
+    }
 
     if (method === 'email') {
       window.location.href =
