@@ -1,0 +1,41 @@
+<!-- ============ CABECERA ============ -->
+<header class="header" id="header">
+  <div class="header__bar">
+    <a class="brand" href="/" aria-label="{{ site.nombre }}, inicio">
+{% include "partials/marca.njk" %}
+      <span class="brand__text">
+        <strong>{{ site.marca_linea_1 }}</strong>
+        <em>{{ site.marca_linea_2 }}</em>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        {% for item in site.menu %}
+        {% set activo = (page.url == "/") if item.url == "/" else (page.url.startsWith(item.url)) %}
+        <li style="--i:{{ loop.index }}"><a href="{{ item.url }}" class="nav__link{% if activo %} is-active{% endif %}"{% if activo %} aria-current="page"{% endif %}><span class="nav__num">{{ loop.index | dosCifras }}</span>{{ item.texto }}</a></li>
+        {% endfor %}
+      </ul>
+      <div class="nav__foot">
+        <a href="tel:{{ site.telefono }}" class="nav__phone">{{ site.telefono_visible }}</a>
+        <a href="{{ site.whatsapp_mensaje | whatsapp(site.whatsapp) }}" target="_blank" rel="noopener" class="btn btn--wa">{% include "partials/ico-whatsapp.njk" %} WhatsApp</a>
+        <p>{{ site.horario }}</p>
+      </div>
+    </nav>
+
+    <div class="header__actions">
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Cambiar entre tema claro y oscuro">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 14.2A8.4 8.4 0 0 1 9.8 4a8.5 8.5 0 1 0 10.2 10.2Z" stroke-linejoin="round"/></svg>
+      </button>
+      <a class="header__tel" href="tel:{{ site.telefono }}" aria-label="Llamar al {{ site.telefono_visible }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6L16.5 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.7a2 2 0 0 1 2-2.2Z" stroke-linejoin="round"/></svg>
+        <span>{{ site.telefono_corto }}</span>
+      </a>
+      <a class="btn btn--sm btn--solid header__cta" href="{{ enlaceContacto }}">{{ site.boton_cabecera }}</a>
+      <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>

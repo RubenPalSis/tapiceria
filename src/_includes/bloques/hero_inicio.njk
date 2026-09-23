@@ -1,0 +1,54 @@
+<!-- ============ PORTADA ============ -->
+<section class="hero"{{ b | estiloSeccion | safe }}>
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <p class="eyebrow hero__eyebrow"><span class="dot"></span> {{ b.antetitulo }}</p>
+
+      <h1 class="hero__title">
+        {% for linea in b.titulo %}
+        <span class="line" style="--l:{{ loop.index0 }}">{{ linea | palabras | safe }}</span>
+        {% endfor %}
+      </h1>
+
+      <p class="hero__lead">{{ b.entradilla | inline | safe }}</p>
+
+      <div class="hero__actions">
+        <a class="btn btn--solid btn--lg" href="{{ b.boton_principal.url }}">
+          {{ b.boton_principal.texto }}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn--line btn--lg" href="tel:{{ site.telefono }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6L16.5 13l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.7a2 2 0 0 1 2-2.2Z" stroke-linejoin="round"/></svg>
+          {{ b.boton_telefono }}
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__media">
+      <div class="hero__arch">
+        <img src="{{ b.imagen }}" alt="{{ b.imagen_alt }}" fetchpriority="high" decoding="async" data-parallax="0.05">
+      </div>
+      <div class="hero__seal" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <defs><path id="sealPath" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+          <text><textPath href="#sealPath">{{ site.nombre }} · Hecho a mano · {{ site.ciudad }} ·</textPath></text>
+        </svg>
+{% include "partials/marca.njk" %}
+      </div>
+      <div class="hero__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <span><strong>Presupuesto gratis</strong><small>Recogida y entrega a domicilio</small></span>
+      </div>
+    </div>
+  </div>
+
+  {% if b.cifras and b.cifras.length %}
+  <div class="container">
+    <dl class="stats hero__stats">
+      {% for c in b.cifras %}
+      <div class="stats__item"><dt data-count="{{ c.numero }}" data-suffix="{{ c.sufijo }}">{{ c.numero }}{{ c.sufijo }}</dt><dd>{{ c.texto }}</dd></div>
+      {% endfor %}
+    </dl>
+  </div>
+  {% endif %}
+</section>

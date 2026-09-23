@@ -1,0 +1,117 @@
+{% set tieneContacto = secciones | tieneBloque("contacto") %}
+{% set enlaceContacto = "#contacto" if tieneContacto else "/contacto/" %}
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('td-theme');document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+{% set urlPagina = site.url + page.url %}
+{% set ogTitulo = (og.titulo if og and og.titulo) or titulo_seo %}
+{% set ogDescripcion = (og.descripcion if og and og.descripcion) or descripcion %}
+{% set ogImagen = site.url + ((og.imagen if og and og.imagen) or site.imagen_social) %}
+{% if site.google_ads_id %}
+<!-- Google tag (gtag.js) · Google Ads con modo de consentimiento v2 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_ads_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'denied', wait_for_update: 500
+  });
+  try {
+    if (localStorage.getItem('td-cookies') === 'aceptadas') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'
+      });
+    }
+  } catch (e) {}
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+  gtag('js', new Date());
+  gtag('config', '{{ site.google_ads_id }}');
+</script>
+<!-- Event snippet for Solicitud de presupuesto conversion page -->
+<script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': '{{ site.google_ads_conversion }}',
+        'event_callback': callback
+    });
+    return false;
+  }
+</script>
+{% endif %}
+<title>{{ titulo_seo }}</title>
+<meta name="description" content="{{ descripcion }}">
+{% if noindex %}
+<meta name="robots" content="noindex, follow">
+{% else %}
+<link rel="canonical" href="{{ urlPagina }}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+{% endif %}
+<meta name="author" content="{{ site.nombre }}">
+<meta name="geo.region" content="ES-Z">
+<meta name="geo.placename" content="{{ site.ciudad }}">
+<meta name="geo.position" content="{{ site.latitud }};{{ site.longitud }}">
+<meta name="ICBM" content="{{ site.latitud }}, {{ site.longitud }}">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#f6f1ea">
+<link rel="icon" href="/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/img/favicon.png">
+<meta property="og:type" content="{{ (og.tipo if og and og.tipo) or 'website' }}">
+<meta property="og:site_name" content="{{ site.nombre }}">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="{{ ogTitulo }}">
+<meta property="og:description" content="{{ ogDescripcion }}">
+<meta property="og:url" content="{{ urlPagina }}">
+<meta property="og:image" content="{{ ogImagen }}">
+<meta property="og:image:alt" content="{{ ogTitulo }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ ogTitulo }}">
+<meta name="twitter:description" content="{{ ogDescripcion }}">
+<meta name="twitter:image" content="{{ ogImagen }}">
+{% for b in secciones %}{% if b.tipo == "hero_inicio" and b.imagen %}
+<link rel="preload" as="image" href="{{ b.imagen }}" fetchpriority="high">
+{% endif %}{% endfor %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">
+{{ { site: site, page: page, secciones: secciones, migas_padre: migas_padre, servicios: collections.servicios, tags: tags, og: og, titulo_seo: titulo_seo, descripcion: descripcion, nombre: nombre } | esquema | jsonld | safe }}
+</script>
+{% if datos_estructurados %}
+<script type="application/ld+json">
+{{ datos_estructurados | safe }}
+</script>
+{% endif %}
+</head>
+<body data-whatsapp="{{ site.whatsapp }}" data-formspree="{{ site.formspree_url }}" data-conversion="{{ site.google_ads_conversion }}">
+
+<div class="scroll-progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+{% include "partials/header.njk" %}
+
+<main id="main">
+
+{% for b in secciones %}
+{% set indice = loop.index %}
+{% include "bloques/" + b.tipo + ".njk" %}
+
+{% endfor %}
+{{ content | safe }}
+</main>
+
+{% include "partials/footer.njk" %}
+
+</body>
+</html>

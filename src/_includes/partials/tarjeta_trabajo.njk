@@ -1,0 +1,22 @@
+{% set td = t.data %}
+<article class="wcard reveal" data-cat="{{ td.categoria }}" data-delay="{{ (loop.index0 % 3) + 1 }}">
+  <a class="wcard__link" href="{{ t.url }}">
+    <div class="wcard__media">
+      <img src="{{ td.portada }}" alt="{{ td.portada_alt or td.titulo }}" loading="lazy" decoding="async" style="view-transition-name:trabajo-{{ td.slug or t.page.fileSlug }}">
+      <span class="chip chip--glass wcard__cat">{{ td.categoria | nombreCategoria(categorias) }}</span>
+      {% if td.antes_despues and td.antes_despues.antes %}
+      <span class="wcard__flag">Antes y después</span>
+      {% elif td.fotos and td.fotos.length %}
+      <span class="wcard__flag">{{ td.fotos.length + 1 }} fotos</span>
+      {% endif %}
+    </div>
+    <div class="wcard__body">
+      {% if td.fecha %}<time class="wcard__date" datetime="{{ td.fecha }}">{{ td.fecha | fechaLarga }}</time>{% endif %}
+      <h3 class="wcard__title">{{ td.titulo }}</h3>
+      <p class="wcard__text">{{ td.resumen }}</p>
+      <span class="wcard__more">Ver trabajo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </div>
+  </a>
+</article>

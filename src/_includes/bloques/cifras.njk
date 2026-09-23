@@ -1,0 +1,13 @@
+<!-- ============ CIFRAS ============ -->
+<section class="section section--tight"{{ b | estiloSeccion | safe }}>
+  <div class="container">
+    {% if b.titulo %}
+    <p class="stats__title reveal">{{ b.titulo | inline | safe }}</p>
+    {% endif %}
+    <dl class="stats stats--band reveal" data-delay="1">
+      {% for c in b.cifras %}
+      <div class="stats__item"><dt data-count="{{ c.numero }}" data-suffix="{{ c.sufijo }}">{{ c.numero }}{{ c.sufijo }}</dt><dd>{{ c.texto }}</dd></div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+<!-- ============ CABECERA DE PÁGINA ============ -->
+<section class="page-hero{% if b.imagen %} page-hero--media{% endif %}"{{ b | estiloSeccion | safe }}>
+  <div class="container page-hero__grid">
+    <div class="page-hero__text">
+      <nav class="breadcrumbs" aria-label="Migas de pan">
+        <a href="/">Inicio</a>
+        {% for m in migas_padre %}
+        <span aria-hidden="true">/</span>
+        <a href="{{ m.url }}">{{ m.texto }}</a>
+        {% endfor %}
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ b.miga }}</span>
+      </nav>
+      {% if b.antetitulo %}
+      <p class="eyebrow reveal"><span class="dot"></span> {{ b.antetitulo }}</p>
+      {% endif %}
+      <h1 class="h1 reveal" data-delay="1">{{ b.titulo | inline | safe }}</h1>
+      {% if b.entradilla %}
+      <p class="lead reveal" data-delay="2">{{ b.entradilla | inline | safe }}</p>
+      {% endif %}
+      {% if (b.boton and b.boton.texto) or (b.boton_whatsapp and b.boton_whatsapp.texto) %}
+      <div class="btn-row reveal" data-delay="3">
+        {% if b.boton and b.boton.texto %}
+        <a class="btn btn--solid btn--lg" href="{{ b.boton.url }}">{{ b.boton.texto }}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        {% endif %}
+        {% if b.boton_whatsapp and b.boton_whatsapp.texto %}
+        <a class="btn btn--line btn--lg" href="{{ b.boton_whatsapp.mensaje | whatsapp(site.whatsapp) }}" target="_blank" rel="noopener">{% include "partials/ico-whatsapp.njk" %} {{ b.boton_whatsapp.texto }}</a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {% if b.imagen %}
+    <figure class="page-hero__media reveal reveal--clip" data-delay="1">
+      <img src="{{ b.imagen }}" alt="{{ b.imagen_alt }}" fetchpriority="high" decoding="async">
+    </figure>
+    {% endif %}
+  </div>
+</section>

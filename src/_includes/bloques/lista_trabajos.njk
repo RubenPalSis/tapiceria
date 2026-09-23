@@ -1,0 +1,31 @@
+<!-- ============ TRABAJOS (TARJETAS) ============ -->
+{% set lista = collections.trabajos | porCategoria(b.categoria) | primeros(b.cantidad) %}
+<section class="section works"{{ b | estiloSeccion | safe }}>
+  <div class="container">
+    {% if b.encabezado and b.encabezado.titulo %}
+    {% set e = b.encabezado %}
+{% include "partials/encabezado.njk" %}
+
+    {% endif %}
+    {% if b.filtros %}
+    <div class="filters reveal" role="group" aria-label="Filtrar trabajos por tipo" data-filtros="trabajosGrid">
+      <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">Todos <small>{{ lista.length }}</small></button>
+      {% for c in categorias | categoriasUsadas(lista) %}
+      <button class="chip" type="button" data-filter="{{ c.slug }}" aria-pressed="false">{{ c.nombre }}</button>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="wgrid{% if b.destacar_primero %} wgrid--featured{% endif %}" id="trabajosGrid">
+      {% for t in lista %}
+{% include "partials/tarjeta_trabajo.njk" %}
+      {% endfor %}
+    </div>
+    {% if b.boton and b.boton.texto %}
+    <div class="section-foot reveal">
+      <a class="btn btn--line btn--lg" href="{{ b.boton.url }}">{{ b.boton.texto }}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</section>

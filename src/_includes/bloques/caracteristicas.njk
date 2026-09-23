@@ -1,0 +1,19 @@
+<!-- ============ CARACTERÍSTICAS ============ -->
+<section class="section"{{ b | estiloSeccion | safe }}>
+  <div class="container">
+    {% if b.encabezado and b.encabezado.titulo %}
+    {% set e = b.encabezado %}
+{% include "partials/encabezado.njk" %}
+
+    {% endif %}
+    <div class="features">
+      {% for f in b.elementos %}
+      <div class="feature reveal" data-delay="{{ (loop.index0 % 3) + 1 }}">
+        <div class="feature__icon">{{ iconos[f.icono] | safe }}</div>
+        <h3>{{ f.titulo }}</h3>
+        <p>{{ f.texto | inline | safe }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

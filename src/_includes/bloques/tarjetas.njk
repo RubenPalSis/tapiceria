@@ -1,0 +1,29 @@
+<!-- ============ TARJETAS DE SERVICIOS ============ -->
+<section class="section"{{ b | estiloSeccion | safe }}>
+  <div class="container">
+    {% if b.encabezado and b.encabezado.titulo %}
+    {% set e = b.encabezado %}
+{% include "partials/encabezado.njk" %}
+
+    {% endif %}
+    <div class="bento">
+      {% for t in b.tarjetas %}
+      {% set destino = t.url or (t.enlace.url if t.enlace) %}
+      <article class="scard{% if t.ancha %} scard--wide{% endif %} reveal" data-delay="{{ (loop.index0 % 3) + 1 }}">
+        <img class="scard__img" src="{{ t.imagen }}" alt="{{ t.imagen_alt }}" loading="lazy" decoding="async">
+        <span class="scard__num">{{ loop.index | dosCifras }}</span>
+        <div class="scard__body">
+          <h3 class="scard__title">{% if destino %}<a href="{{ destino }}">{{ t.titulo }}</a>{% else %}{{ t.titulo }}{% endif %}</h3>
+          <p>{{ t.texto | inline | safe }}</p>
+          {% if t.enlace and t.enlace.texto %}
+          <span class="scard__more" aria-hidden="true">{{ t.enlace.texto | replace("→", "") | trim }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          {% endif %}
+        </div>
+      </article>
+
+      {% endfor %}
+    </div>
+  </div>
+</section>

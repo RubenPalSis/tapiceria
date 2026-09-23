@@ -1,0 +1,98 @@
+{
+  "nombre": "Tapicerías Deluxe",
+  "marca_linea_1": "Tapicerías",
+  "marca_linea_2": "Deluxe",
+  "url": "https://tapiceriasdeluxe.com",
+  "telefono": "+34654680667",
+  "telefono_visible": "+34 654 68 06 67",
+  "telefono_corto": "654 68 06 67",
+  "whatsapp": "34654680667",
+  "whatsapp_mensaje": "Hola, quería pedir un presupuesto",
+  "email": "tapiceriasdeluxe@gmail.com",
+  "facebook_url": "https://www.facebook.com/tapiceriasdeluxe.simon",
+  "facebook_usuario": "/tapiceriasdeluxe.simon",
+  "instagram_url": "https://www.instagram.com/deluxetapicerias",
+  "instagram_usuario": "@deluxetapicerias",
+  "horario": "Lunes a sábado · 8:00–14:00 / 15:30–20:00",
+  "horarios": [
+    {
+      "dias": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "abre": "08:00",
+      "cierra": "14:00"
+    },
+    {
+      "dias": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "abre": "15:30",
+      "cierra": "20:00"
+    }
+  ],
+  "menu": [
+    {
+      "texto": "Inicio",
+      "url": "/"
+    },
+    {
+      "texto": "Servicios",
+      "url": "/servicios/"
+    },
+    {
+      "texto": "Trabajos",
+      "url": "/trabajos/"
+    },
+    {
+      "texto": "Telas",
+      "url": "/telas-y-materiales/"
+    },
+    {
+      "texto": "Nosotros",
+      "url": "/nosotros/"
+    },
+    {
+      "texto": "Contacto",
+      "url": "/contacto/"
+    }
+  ],
+  "boton_cabecera": "Presupuesto gratis",
+  "boton_flotante": "Pide presupuesto",
+  "pie_descripcion": "Artesanos de la tapicería clásica y moderna en Zaragoza. Más de 20 años dejando cada mueble como nuevo.",
+  "pie_cobertura": "Zaragoza, Utebo, Cartuja, La Almozara, Cuarte de Huerva, Cartuja Baja, Calatayud, Cadrete, Movera, Juslibol, San Juan de Mozarrifar, Garrapinillos, La Puebla de Alfindén y todo Aragón.",
+  "ciudad": "Zaragoza",
+  "provincia": "Zaragoza",
+  "region": "Aragón",
+  "latitud": 41.6488,
+  "longitud": -0.8891,
+  "zonas": [
+    "Zaragoza",
+    "Utebo",
+    "Cartuja Baja",
+    "La Almozara",
+    "Cuarte de Huerva",
+    "Calatayud",
+    "Cadrete",
+    "Movera",
+    "Juslibol",
+    "San Juan de Mozarrifar",
+    "Garrapinillos",
+    "La Puebla de Alfindén"
+  ],
+  "rango_precios": "€€",
+  "imagen_social": "/img/hero-salon.jpg",
+  "descripcion_negocio": "Taller de tapicería en Zaragoza con más de 20 años de experiencia: tapizado de sofás, sillas y muebles, restauración y tapicería para locales. Presupuesto gratis y recogida a domicilio.",
+  "google_ads_id": "AW-445269684",
+  "google_ads_conversion": "AW-445269684/6ggFCO_Myf0cELSNqdQB",
+  "formspree_url": "https://formspree.io/f/xaenqpvl"
+}

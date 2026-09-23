@@ -1,0 +1,108 @@
+<!-- ============ PIE ============ -->
+<footer class="footer">
+  <div class="container footer__cta">
+    <p class="eyebrow eyebrow--light"><span class="dot"></span> Presupuesto gratis y sin compromiso</p>
+    <p class="footer__claim reveal">¿Le damos una <em>nueva vida</em> a su mueble?</p>
+    <div class="footer__cta-actions reveal" data-delay="1">
+      <a class="footer__phone" href="tel:{{ site.telefono }}">{{ site.telefono_visible }}</a>
+      <a class="btn btn--lg btn--wa" href="{{ site.whatsapp_mensaje | whatsapp(site.whatsapp) }}" target="_blank" rel="noopener">{% include "partials/ico-whatsapp.njk" %} Escríbanos por WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a class="brand brand--footer" href="/">
+{% include "partials/marca.njk" %}
+        <span class="brand__text"><strong>{{ site.marca_linea_1 }}</strong><em>{{ site.marca_linea_2 }}</em></span>
+      </a>
+      <p>{{ site.pie_descripcion }}</p>
+      <div class="footer__social">
+        <a href="{{ site.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.5 1.6-1.5h1.6V3.3A22 22 0 0 0 14.4 3c-2.4 0-4 1.5-4 4.2v2.6H7.7V13h2.7v8h3.1Z"/></svg>
+        </a>
+        <a href="{{ site.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="{{ '' | whatsapp(site.whatsapp) }}" target="_blank" rel="noopener" aria-label="WhatsApp">{% include "partials/ico-whatsapp.njk" %}</a>
+      </div>
+    </div>
+
+    <nav class="footer__col" aria-label="Páginas">
+      <h2>La web</h2>
+      <ul>
+        {% for item in site.menu %}
+        <li><a href="{{ item.url }}">{{ item.texto }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <nav class="footer__col" aria-label="Servicios">
+      <h2>Servicios</h2>
+      <ul>
+        {% for s in collections.servicios %}
+        <li><a href="{{ s.url }}">{{ s.data.nombre }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="footer__col">
+      <h2>Contacto</h2>
+      <ul>
+        <li><a href="tel:{{ site.telefono }}">{{ site.telefono_visible }}</a></li>
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li class="footer__muted">{{ site.horario }}</li>
+      </ul>
+      <h2 class="footer__sub">Dónde trabajamos</h2>
+      <p class="footer__areas">{{ site.pie_cobertura }}</p>
+    </div>
+  </div>
+
+  <div class="container footer__bar">
+    <p><a href="https://zetaweb.es" target="_blank" rel="noopener" class="footer__mark">©®</a> <span id="year">{{ ahora.getFullYear() }}</span> {{ site.nombre }}. Todos los derechos reservados.</p>
+    <p class="footer__legal">
+      <a href="/politica-cookies/">Cookies</a><a href="/politica-privacidad/">Privacidad</a><a href="/aviso-legal/">Aviso legal</a>{% if site.google_ads_id %}<button type="button" id="cookiesConfig">Configurar cookies</button>{% endif %}
+    </p>
+    <p class="footer__credit">Creado por <a href="https://zetaweb.es" target="_blank" rel="noopener">ZetaWeb</a></p>
+  </div>
+</footer>
+
+{% if site.google_ads_id %}
+<!-- ============ AVISO DE COOKIES ============ -->
+<div class="cookies" id="cookies" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+  <p>Usamos cookies propias y de Google para medir qué anuncios le han traído hasta aquí y mejorar nuestra publicidad. Puede aceptarlas o rechazarlas; la web funciona igual. <a href="/politica-cookies/">Más información</a>.</p>
+  <div class="cookies__actions">
+    <button class="btn btn--sm btn--line" type="button" id="cookiesNo">Rechazar</button>
+    <button class="btn btn--sm btn--solid" type="button" id="cookiesSi">Aceptar</button>
+  </div>
+</div>
+
+{% endif %}
+<!-- ============ FLOTANTES ============ -->
+<a class="fab fab--wa" href="{{ site.whatsapp_mensaje | whatsapp(site.whatsapp) }}" target="_blank" rel="noopener" aria-label="Pedir presupuesto por WhatsApp">
+  {% include "partials/ico-whatsapp.njk" %}
+  <span>{{ site.boton_flotante }}</span>
+</a>
+<button class="fab fab--top" id="toTop" type="button" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 19V6M6 12l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+{% if lightbox or (secciones | tieneBloque("ampliable")) %}
+<!-- ============ VISOR DE FOTOS ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de fotos" hidden>
+  <button class="lightbox__close" id="lbClose" type="button" aria-label="Cerrar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="m6 6 12 12M18 6 6 18" stroke-linecap="round"/></svg>
+  </button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" type="button" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <figure class="lightbox__figure">
+    <img id="lbImg" src="data:," alt="">
+    <figcaption id="lbCaption"></figcaption>
+  </figure>
+  <button class="lightbox__nav lightbox__nav--next" id="lbNext" type="button" aria-label="Siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</div>
+{% endif %}
+
+<script src="/script.js"></script>

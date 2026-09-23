@@ -1,0 +1,19 @@
+<!-- ============ CONTACTO (PÁGINA) ============ -->
+<section class="section contact"{{ b | estiloSeccion | safe }}>
+  <div class="container contact__grid">
+    <div class="contact__info reveal">
+      {% if b.etiqueta %}<span class="chip chip--brand">{{ b.etiqueta }}</span>{% endif %}
+      <h2 class="h3">{{ b.titulo | inline | safe }}</h2>
+      <p class="contact__desc">{{ b.texto | inline | safe }}</p>
+{% include "partials/canales.njk" %}
+    </div>
+    <div class="contact__form reveal" data-delay="1">
+      {% set formServicios = b.servicios %}
+      {% set formTitulo = b.formulario_titulo %}
+      {% set formTexto = b.formulario_texto %}
+      {% set formExitoTitulo = b.exito_titulo %}
+      {% set formExitoTexto = b.exito_texto %}
+{% include "partials/formulario.njk" %}
+    </div>
+  </div>
+</section>

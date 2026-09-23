@@ -1,0 +1,553 @@
+# Configuración de Pages CMS (https://pagescms.org)
+# El sitio se genera con Eleventy a partir de estos archivos (npm run build).
+
+media:
+  input: src/img
+  output: /img
+  categories: [image]
+
+components:
+  texto_formato:
+    type: text
+    description: "Use *asteriscos* para el texto destacado en color, **dobles asteriscos** para negrita y una nueva línea para un salto de línea."
+
+  encabezado:
+    type: object
+    label: Encabezado de la sección
+    fields:
+      - { name: antetitulo, label: Antetítulo, type: string }
+      - { name: titulo, label: Título, component: texto_formato }
+      - { name: entradilla, label: Entradilla, type: text }
+      - { name: centrado, label: Centrado, type: boolean }
+
+  boton:
+    type: object
+    label: Botón
+    fields:
+      - { name: texto, label: Texto, type: string }
+      - { name: url, label: Enlace, type: string, description: "Ej. /contacto/ o #contacto" }
+
+  boton_whatsapp:
+    type: object
+    label: Botón de WhatsApp
+    fields:
+      - { name: texto, label: Texto del botón, type: string }
+      - { name: mensaje, label: Mensaje prellenado, type: string }
+
+  ancla:
+    type: string
+    label: Ancla (id)
+    description: "Identificador para enlazar con #ancla. Déjelo vacío si no lo necesita."
+
+  fondo:
+    type: select
+    label: Fondo
+    options:
+      values:
+        - { name: normal, label: Normal }
+        - { name: alterno, label: Alterno (tono crema) }
+        - { name: superficie, label: Superficie con bordes }
+
+  espacio_superior:
+    type: select
+    label: Espacio superior
+    options:
+      values:
+        - { name: normal, label: Normal }
+        - { name: reducido, label: Reducido }
+        - { name: minimo, label: Mínimo }
+
+  seo:
+    type: object
+    label: Redes sociales (Open Graph)
+    fields:
+      - { name: titulo, label: Título, type: string }
+      - { name: descripcion, label: Descripción, type: text }
+      - { name: imagen, label: Imagen, type: image }
+      - name: tipo
+        label: Tipo
+        type: select
+        options:
+          values: [website, article]
+
+  sitemap:
+    type: object
+    label: Sitemap
+    fields:
+      - { name: excluir, label: Excluir del sitemap, type: boolean }
+      - name: frecuencia
+        label: Frecuencia de cambio
+        type: select
+        options:
+          values: [weekly, monthly, yearly]
+      - name: prioridad
+        label: Prioridad
+        type: select
+        options:
+          values: ["1.0", "0.9", "0.8", "0.7", "0.5"]
+
+  secciones:
+    type: block
+    label: Secciones
+    list: true
+    blockKey: tipo
+    blocks:
+      - name: hero_inicio
+        label: Portada (hero)
+        fields:
+          - { name: antetitulo, label: Antetítulo, type: string }
+          - name: titulo
+            label: Titular (una entrada por línea)
+            type: string
+            list: true
+            description: "*palabra* = en color, _palabra_ = en cursiva."
+          - { name: entradilla, label: Entradilla, type: text }
+          - { name: imagen, label: Imagen de fondo, type: image }
+          - { name: imagen_alt, label: Texto alternativo de la imagen, type: string }
+          - { name: boton_principal, component: boton, label: Botón principal }
+          - { name: boton_telefono, label: Texto del botón de llamada, type: string }
+          - name: cifras
+            label: Cifras
+            type: object
+            list: true
+            fields:
+              - { name: numero, label: Número, type: number }
+              - { name: sufijo, label: Sufijo, type: string, description: "Ej. + o %" }
+              - { name: texto, label: Texto, type: string }
+          - { name: texto_desliza, label: Texto de "desliza", type: string }
+          - { name: ancla, component: ancla }
+
+      - name: cinta
+        label: Cinta de palabras en movimiento
+        fields:
+          - { name: elementos, label: Palabras, type: string, list: true }
+
+      - name: cabecera
+        label: Cabecera de página
+        fields:
+          - { name: miga, label: Nombre en las migas de pan, type: string }
+          - { name: antetitulo, label: Antetítulo, type: string }
+          - { name: titulo, label: Título, component: texto_formato }
+          - { name: entradilla, label: Entradilla, type: text }
+          - { name: imagen, label: Imagen (opcional), type: image }
+          - { name: imagen_alt, label: Texto alternativo de la imagen, type: string }
+          - { name: boton, component: boton }
+          - { name: boton_whatsapp, component: boton_whatsapp }
+
+      - name: presentacion
+        label: Imagen + texto
+        fields:
+          - { name: imagen, label: Imagen principal, type: image }
+          - { name: imagen_alt, label: Texto alternativo, type: string }
+          - { name: imagen_flotante, label: Imagen flotante (opcional), type: image }
+          - { name: imagen_flotante_alt, label: Texto alternativo de la imagen flotante, type: string }
+          - { name: imagen_derecha, label: Imagen a la derecha, type: boolean }
+          - name: sello
+            label: Sello sobre la imagen
+            type: object
+            fields:
+              - { name: cifra, label: Cifra, type: string }
+              - { name: texto, label: Texto, type: text }
+          - { name: antetitulo, label: Antetítulo, type: string }
+          - { name: titulo, label: Título, component: texto_formato }
+          - { name: entradilla, label: Entradilla, type: text }
+          - { name: parrafos, label: Párrafos, type: text, list: true }
+          - { name: lista, label: Lista con ticks, type: string, list: true, description: "Admite **negrita**." }
+          - name: enlace
+            label: Enlace
+            type: object
+            fields:
+              - { name: texto, label: Texto, type: string }
+              - { name: url, label: Enlace, type: string }
+              - name: estilo
+                label: Estilo
+                type: select
+                options:
+                  values:
+                    - { name: flecha, label: Enlace con flecha }
+                    - { name: boton, label: Botón }
+          - { name: ancla, component: ancla }
+          - { name: fondo, component: fondo }
+          - { name: espacio_superior, component: espacio_superior }
+
+      - name: tarjetas
+        label: Tarjetas de servicios
+        fields:
+          - { name: encabezado, component: encabezado }
+          - name: tarjetas
+            label: Tarjetas
+            type: object
+            list: true
+            fields:
+              - { name: titulo, label: Título, type: string }
+              - { name: url, label: Enlace del título (opcional), type: string }
+              - { name: texto, label: Texto, type: text }
+              - { name: imagen, label: Imagen, type: image }
+              - { name: imagen_alt, label: Texto alternativo, type: string }
+              - { name: ancha, label: Tarjeta ancha, type: boolean }
+              - { name: enlace, component: boton, label: Enlace inferior }
+          - { name: ancla, component: ancla }
+          - { name: fondo, component: fondo }
+          - { name: espacio_superior, component: espacio_superior }
+
+      - name: caracteristicas
+        label: Características con iconos
+        fields:
+          - { name: encabezado, component: encabezado }
+          - name: elementos
+            label: Elementos
+            type: object
+            list: true
+            fields:
+              - name: icono
+                label: Icono
+                type: select
+                options:
+                  values:
+                    - a-domicilio-gratis
+                    - telas-de-alta-gama
+                    - sin-compromiso
+                    - chaise-longue-y-rinconeras
+                    - sofas-chester-y-capitone
+                    - sofas-cama-y-apertura-italiana
+                    - sofas-clasicos-de-2-y-3-plazas
+                    - sillas-de-comedor
+                    - reencolado-y-ajuste-de-estructuras
+                    - sillas-de-rejilla-y-clasicas
+                    - sillas-de-oficina-y-escritorio
+                    - sillones-orejeros-y-butacas
+                    - sillones-relax-y-mecedoras
+                    - pufs-banquetas-y-descalzadoras
+                    - bancos-de-bodega-y-rinconeras
+                    - atado-de-muelles-y-cinchado
+                    - reencolado-y-ebanisteria
+                    - espumas-nuevas-y-viscoelastica
+                    - lijado-pulido-y-barnizado
+                    - bancos-corridos-y-cabinas-booths
+                    - discotecas-bares-de-copas-y-pubs
+                    - hoteles-y-alojamientos-turisticos
+                    - gimnasios-y-centros-medicos
+                    - antimanchas
+                    - terciopelo
+                    - tejidos-naturales
+                    - piel-y-polipiel
+                    - ignifugas
+                    - espumas
+                    - muestrario
+                    - artesania
+                    - experiencia
+                    - cercania
+              - { name: titulo, label: Título, type: string }
+              - { name: texto, label: Texto, type: text }
+          - { name: ancla, component: ancla }
+          - { name: fondo, component: fondo }
+          - { name: espacio_superior, component: espacio_superior }
+
+      - name: antes_despues
+        label: Antes y después
+        fields:
+          - { name: encabezado, component: encabezado }
+          - name: elementos
+            label: Comparaciones
+            type: object
+            list: true
+            fields:
+              - { name: titulo, label: Título, type: string }
+              - { name: detalle, label: Detalle, type: string }
+              - { name: antes, label: Foto de antes, type: image }
+              - { name: antes_alt, label: Texto alternativo (antes), type: string }
+              - { name: despues, label: Foto de después, type: image }
+              - { name: despues_alt, label: Texto alternativo (después), type: string }
+          - { name: ancla, component: ancla }
+          - { name: fondo, component: fondo }
+          - { name: espacio_superior, component: espacio_superior }
+
+      - name: galeria
+        label: Galería de fotos
+        fields:
+          - { name: encabezado, component: encabezado }
+          - { name: ampliable, label: Ampliar fotos al hacer clic, type: boolean }
+          - name: fotos
+            label: Fotos
+            type: object
+            list: true
+            fields:
+              - { name: imagen, label: Imagen, type: image }
+              - { name: alt, label: Texto alternativo, type: string }
+              - { name: titulo, label: Título, type: string }
+              - { name: leyenda, label: Leyenda al ampliar, type: string }
+              - name: formato
+                label: Formato
+                type: select
+                options:
+                  values:
+                    - { name: normal, label: Normal }
+                    - { name: alta, label: Alta }
+                    - { name: ancha, label: Ancha }
+          - { name: ancla, component: ancla }
+          - { name: fondo, component: fondo }
+          - { name: espacio_superior, component: espacio_superior }
+
+      - name: lista_trabajos
+        label: Trabajos realizados (tarjetas)
+        description: "Muestra automáticamente los trabajos de la colección «Trabajos realizados»."
+        fields:
+          - { name: encabezado, component: encabezado }
+          - name: categoria
+            label: Solo de esta categoría (opcional)
+            type: select
+            options:
+              values:
+                - { name: sofas, label: Sofás }
+                - { name: sillones, label: Sillones y butacas }
+                - { name: sillas, label: Sillas }
+                - { name: locales, label: Hostelería y locales }
+                - { name: especiales, label: Cabeceros y especiales }
+          - { name: cantidad, label: Cuántos mostrar (vacío = todos), type: number }
+          - { name: filtros, label: Mostrar botones de filtro por categoría, type: boolean }
+          - { name: destacar_primero, label: Primer trabajo en grande, type: boolean }
+          - { name: boton, component: boton, label: Botón inferior }
+          - { name: ancla, component: ancla }
+          - { name: fondo, component: fondo }
+          - { name: espacio_superior, component: espacio_superior }
+
+      - name: cifras
+        label: Cifras destacadas
+        fields:
+          - { name: titulo, label: Título (opcional), component: texto_formato }
+          - name: cifras
+            label: Cifras
+            type: object
+            list: true
+            fields:
+              - { name: numero, label: Número, type: number }
+              - { name: sufijo, label: Sufijo, type: string, description: "Ej. + o %" }
+              - { name: texto, label: Texto, type: string }
+          - { name: fondo, component: fondo }
+
+      - name: clientes
+        label: Logos de clientes
+        fields:
+          - { name: titulo, label: Título, type: string }
+          - { name: texto, label: Texto, type: string }
+          - name: logos
+            label: Logos
+            type: object
+            list: true
+            fields:
+              - { name: imagen, label: Logo, type: image }
+              - { name: alt, label: Nombre del cliente, type: string }
+          - { name: espacio_superior, component: espacio_superior }
+
+      - name: llamada_accion
+        label: Llamada a la acción con pasos
+        fields:
+          - { name: titulo, label: Título, component: texto_formato }
+          - { name: texto, label: Texto, type: text }
+          - { name: boton, component: boton }
+          - { name: boton_whatsapp, component: boton_whatsapp }
+          - name: pasos
+            label: Pasos
+            type: object
+            list: true
+            fields:
+              - { name: titulo, label: Título, type: string }
+              - { name: texto, label: Texto, type: string }
+
+      - name: contacto_breve
+        label: Formulario de contacto (portada)
+        fields:
+          - { name: encabezado, component: encabezado }
+          - { name: servicios, label: Opciones del desplegable de servicio, type: string, list: true }
+          - { name: nota, label: Nota bajo el formulario, type: string }
+          - { name: ancla, component: ancla, default: contacto }
+
+      - name: contacto_completo
+        label: Formulario de contacto (página de contacto)
+        fields:
+          - { name: etiqueta, label: Etiqueta, type: string }
+          - { name: titulo, label: Título, type: string }
+          - { name: texto, label: Texto, type: text }
+          - { name: formulario_titulo, label: Título del formulario, type: string }
+          - { name: formulario_texto, label: Texto del formulario, type: string }
+          - { name: servicios, label: Opciones del desplegable de servicio, type: string, list: true }
+          - { name: exito_titulo, label: Título del mensaje de envío correcto, type: string }
+          - { name: exito_texto, label: Texto del mensaje de envío correcto, type: text }
+          - { name: ancla, component: ancla, default: contacto }
+
+      - name: texto
+        label: Texto largo (páginas legales)
+        fields:
+          - name: contenido
+            label: Contenido
+            type: rich-text
+            options:
+              format: html
+              media: false
+          - { name: espacio_superior, component: espacio_superior }
+
+      - name: preguntas
+        label: Preguntas frecuentes
+        description: "Se muestran desplegables y Google las recibe como datos estructurados (FAQ)."
+        fields:
+          - { name: encabezado, component: encabezado }
+          - name: preguntas
+            label: Preguntas
+            type: object
+            list: true
+            fields:
+              - { name: pregunta, label: Pregunta, type: string }
+              - { name: respuesta, label: Respuesta, component: texto_formato }
+          - { name: fondo, component: fondo }
+          - { name: ancla, component: ancla }
+
+content:
+  - name: ajustes
+    label: Ajustes del sitio
+    type: file
+    path: src/_data/site.json
+    format: json
+    fields:
+      - { name: nombre, label: Nombre del negocio, type: string, required: true }
+      - { name: marca_linea_1, label: Logotipo – primera línea, type: string }
+      - { name: marca_linea_2, label: Logotipo – segunda línea, type: string }
+      - { name: url, label: Dominio, type: string, description: "Sin barra final. Ej. https://tapiceriasdeluxe.com" }
+      - { name: telefono, label: Teléfono (formato internacional), type: string, description: "Ej. +34654680667" }
+      - { name: telefono_visible, label: Teléfono tal como se muestra, type: string }
+      - { name: telefono_corto, label: Teléfono corto, type: string }
+      - { name: whatsapp, label: Número de WhatsApp, type: string, description: "Solo cifras con prefijo. Ej. 34654680667" }
+      - { name: whatsapp_mensaje, label: Mensaje de WhatsApp por defecto, type: string }
+      - { name: email, label: Email, type: string }
+      - { name: facebook_url, label: Facebook (enlace), type: string }
+      - { name: facebook_usuario, label: Facebook (usuario), type: string }
+      - { name: instagram_url, label: Instagram (enlace), type: string }
+      - { name: instagram_usuario, label: Instagram (usuario), type: string }
+      - { name: horario, label: Horario, type: string }
+      - name: horarios
+        label: Horario para Google (datos estructurados)
+        type: object
+        list: true
+        fields:
+          - { name: dias, label: "Días (en inglés: Monday, Tuesday…)", type: string, list: true }
+          - { name: abre, label: Abre (HH:MM), type: string }
+          - { name: cierra, label: Cierra (HH:MM), type: string }
+      - name: menu
+        label: Menú principal
+        type: object
+        list: true
+        fields:
+          - { name: texto, label: Texto, type: string }
+          - { name: url, label: Enlace, type: string }
+      - { name: boton_cabecera, label: Botón de la cabecera, type: string }
+      - { name: boton_flotante, label: Botón flotante de WhatsApp, type: string }
+      - { name: pie_descripcion, label: Pie – descripción, type: text }
+      - { name: pie_cobertura, label: Pie – zonas de cobertura, type: text }
+      - { name: ciudad, label: SEO – ciudad, type: string }
+      - { name: provincia, label: SEO – provincia, type: string }
+      - { name: region, label: SEO – comunidad autónoma, type: string }
+      - { name: latitud, label: SEO – latitud, type: number }
+      - { name: longitud, label: SEO – longitud, type: number }
+      - { name: zonas, label: SEO – localidades donde se trabaja, type: string, list: true }
+      - { name: rango_precios, label: SEO – rango de precios, type: string, description: "Ej. €€" }
+      - { name: imagen_social, label: SEO – imagen por defecto al compartir, type: image }
+      - { name: descripcion_negocio, label: SEO – descripción del negocio para Google, type: text }
+      - { name: google_ads_id, label: Google Ads – ID, type: string }
+      - { name: google_ads_conversion, label: Google Ads – conversión, type: string }
+      - { name: formspree_url, label: Formspree – URL del formulario, type: string }
+
+  - name: trabajos
+    label: Trabajos realizados
+    type: collection
+    path: src/trabajos
+    format: yaml-frontmatter
+    filename: "{fields.slug}.md"
+    view:
+      primary: titulo
+      fields: [titulo, categoria, fecha]
+      sort: [fecha, titulo]
+      default: { sort: fecha, order: desc }
+    fields:
+      - { name: titulo, label: Título, type: string, required: true }
+      - { name: slug, label: URL, type: string, required: true, description: "Parte final de la dirección: /trabajos/<url>/. Solo minúsculas, números y guiones." }
+      - name: categoria
+        label: Categoría
+        type: select
+        required: true
+        options:
+          values:
+            - { name: sofas, label: Sofás }
+            - { name: sillones, label: Sillones y butacas }
+            - { name: sillas, label: Sillas }
+            - { name: locales, label: Hostelería y locales }
+            - { name: especiales, label: Cabeceros y especiales }
+      - { name: fecha, label: Fecha, type: date, description: "Los trabajos más recientes aparecen primero." }
+      - { name: lugar, label: Lugar (opcional), type: string, description: "Ej. Zaragoza, Utebo…" }
+      - { name: resumen, label: Resumen para la tarjeta, type: text, required: true, description: "Una o dos frases. También es la descripción para Google." }
+      - { name: portada, label: Foto de portada, type: image, required: true }
+      - { name: portada_alt, label: Descripción de la foto de portada, type: string }
+      - name: fotos
+        label: Más fotos
+        type: object
+        list: true
+        fields:
+          - { name: imagen, label: Foto, type: image }
+          - { name: alt, label: Descripción, type: string }
+      - name: antes_despues
+        label: Antes y después (opcional)
+        type: object
+        description: "Si rellena las dos fotos, la portada del trabajo será un comparador deslizante."
+        fields:
+          - { name: antes, label: Foto de antes, type: image }
+          - { name: despues, label: Foto de después, type: image }
+      - { name: destacado, label: Destacado, type: boolean, description: "Sube el trabajo por delante de los que no tienen fecha." }
+      - { name: body, label: Texto del trabajo, type: rich-text }
+
+  - name: paginas
+    label: Páginas
+    type: collection
+    path: src/paginas
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      primary: titulo_seo
+      fields: [titulo_seo, permalink]
+    fields:
+      - { name: titulo_seo, label: Título (SEO), type: string, required: true }
+      - { name: descripcion, label: Meta descripción, type: text }
+      - { name: permalink, label: URL, type: string, required: true, description: "Ej. /trabajos/ (con barras al principio y al final)" }
+      - { name: noindex, label: Ocultar a buscadores, type: boolean }
+      - { name: og, component: seo }
+      - { name: sitemap, component: sitemap }
+      - name: datos_estructurados
+        label: Datos estructurados extra (JSON-LD)
+        description: "Opcional. El negocio, las migas de pan, el servicio y las preguntas frecuentes ya se generan solos."
+        type: code
+        options:
+          format: json
+      - { name: secciones, component: secciones }
+
+  - name: servicios
+    label: Servicios
+    type: collection
+    path: src/servicios
+    format: yaml-frontmatter
+    filename: "{fields.slug}.md"
+    view:
+      primary: nombre
+      sort: [orden, nombre]
+    fields:
+      - { name: nombre, label: Nombre del servicio, type: string, required: true, description: "Aparece en el pie y en las migas de pan." }
+      - { name: slug, label: URL, type: string, required: true, description: "Parte final de la dirección: /servicios/<slug>/" }
+      - { name: orden, label: Orden en el pie, type: number }
+      - { name: titulo_seo, label: Título (SEO), type: string, required: true }
+      - { name: descripcion, label: Meta descripción, type: text }
+      - { name: noindex, label: Ocultar a buscadores, type: boolean }
+      - { name: og, component: seo }
+      - { name: sitemap, component: sitemap }
+      - name: datos_estructurados
+        label: Datos estructurados extra (JSON-LD)
+        description: "Opcional. El negocio, las migas de pan, el servicio y las preguntas frecuentes ya se generan solos."
+        type: code
+        options:
+          format: json
+      - { name: secciones, component: secciones }

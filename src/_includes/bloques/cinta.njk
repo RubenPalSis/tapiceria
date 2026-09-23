@@ -1,0 +1,8 @@
+<!-- ============ CINTA ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {% for _ in [1, 2] %}
+    <div class="marquee__group">{% for t in b.elementos %}<span{% if loop.index is even %} class="is-outline"{% endif %}>{{ t }}</span><i>✦</i>{% endfor %}</div>
+    {% endfor %}
+  </div>
+</div>

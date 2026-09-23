@@ -1,0 +1,7 @@
+[
+  { "slug": "sofas", "nombre": "Sofás" },
+  { "slug": "sillones", "nombre": "Sillones y butacas" },
+  { "slug": "sillas", "nombre": "Sillas" },
+  { "slug": "locales", "nombre": "Hostelería y locales" },
+  { "slug": "especiales", "nombre": "Cabeceros y especiales" }
+]

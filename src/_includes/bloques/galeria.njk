@@ -1,0 +1,20 @@
+<!-- ============ GALERÍA ============ -->
+<section class="section"{{ b | estiloSeccion | safe }}>
+  <div class="container">
+    {% if b.encabezado and b.encabezado.titulo %}
+    {% set e = b.encabezado %}
+{% include "partials/encabezado.njk" %}
+
+    {% endif %}
+    <div class="gallery"{% if b.ampliable %} data-zoom-group{% endif %}>
+      {% for f in b.fotos %}
+      <figure class="tile{% if f.formato == 'alta' %} tile--tall{% elif f.formato == 'ancha' %} tile--wide{% endif %} reveal" data-delay="{{ (loop.index0 % 3) + 1 }}">
+        {% if b.ampliable %}<button class="tile__zoom" type="button" data-zoom data-caption="{{ f.leyenda or f.titulo }}" aria-label="Ampliar: {{ f.titulo or f.alt }}">{% endif %}
+        <img src="{{ f.imagen }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
+        {% if b.ampliable %}</button>{% endif %}
+        {% if f.titulo %}<figcaption>{{ f.titulo }}</figcaption>{% endif %}
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>

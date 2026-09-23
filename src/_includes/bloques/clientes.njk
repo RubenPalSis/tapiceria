@@ -1,0 +1,18 @@
+<!-- ============ CLIENTES ============ -->
+<section class="clients"{{ b | estiloSeccion | safe }}>
+  <div class="container clients__head">
+    <h2 class="h3 reveal">{{ b.titulo | inline | safe }}</h2>
+    {% if b.texto %}
+    <p class="reveal" data-delay="1">{{ b.texto | inline | safe }}</p>
+    {% endif %}
+  </div>
+  <div class="logos">
+    <div class="logos__track" id="logosTrack">
+      <ul class="logos__group" aria-label="Clientes">
+        {% for l in b.logos %}
+        <li><img src="{{ l.imagen }}" alt="{{ l.alt }}" loading="lazy" decoding="async"></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

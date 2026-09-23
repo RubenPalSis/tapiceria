@@ -1,0 +1,11 @@
+    <header class="section-head{% if e.centrado %} section-head--center{% endif %}">
+      {% if e.antetitulo %}
+      <p class="eyebrow reveal"><span class="dot"></span> {{ e.antetitulo }}</p>
+      {% endif %}
+      {% if e.titulo %}
+      <h2 class="h2 reveal" data-delay="1">{{ e.titulo | inline | safe }}</h2>
+      {% endif %}
+      {% if e.entradilla %}
+      <p class="section-head__lead reveal" data-delay="2">{{ e.entradilla | inline | safe }}</p>
+      {% endif %}
+    </header>

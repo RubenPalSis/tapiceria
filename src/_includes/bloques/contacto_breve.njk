@@ -1,0 +1,21 @@
+<!-- ============ CONTACTO (PORTADA) ============ -->
+<section class="section contact"{{ b | estiloSeccion | safe }}>
+  <div class="container contact__grid">
+    <div class="contact__info">
+      {% if b.encabezado and b.encabezado.titulo %}
+      {% set e = b.encabezado %}
+{% include "partials/encabezado.njk" %}
+      {% endif %}
+      <div class="reveal" data-delay="2">
+{% include "partials/canales.njk" %}
+      </div>
+    </div>
+    <div class="contact__form reveal" data-delay="1">
+      {% set formServicios = b.servicios %}
+      {% set formNota = b.nota %}
+      {% set formTitulo = "Pida su presupuesto" %}
+      {% set formTexto = "Gratis y sin compromiso." %}
+{% include "partials/formulario.njk" %}
+    </div>
+  </div>
+</section>

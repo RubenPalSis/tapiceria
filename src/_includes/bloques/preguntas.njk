@@ -1,0 +1,18 @@
+<!-- ============ PREGUNTAS FRECUENTES ============ -->
+<section class="section faq"{{ b | estiloSeccion | safe }}>
+  <div class="container">
+    {% if b.encabezado and b.encabezado.titulo %}
+    {% set e = b.encabezado %}
+{% include "partials/encabezado.njk" %}
+
+    {% endif %}
+    <div class="faq__list">
+      {% for p in b.preguntas %}
+      <details class="faq__item reveal" data-delay="{{ loop.index | min(4) }}"{% if loop.first %} open{% endif %}>
+        <summary><h3>{{ p.pregunta }}</h3><span class="faq__ico" aria-hidden="true"></span></summary>
+        <div class="faq__a"><p>{{ p.respuesta | inline | safe }}</p></div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
