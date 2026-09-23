@@ -287,12 +287,6 @@ p strong,li strong{color:var(--ink);font-weight:650}
 .hero__seal .brand__mark{width:40px;height:40px}
 .js .hero__seal{animation:fadeUp 1s var(--ease) .9s both}
 
-.hero__badge{position:absolute;right:-1.2rem;top:12%;padding:1rem 1.25rem;border-radius:var(--r-m);background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line-2);box-shadow:var(--shadow-m);display:flex;flex-direction:column;line-height:1.1}
-.hero__badge{flex-direction:row;align-items:center;gap:.8rem}
-.hero__badge svg{width:38px;height:38px;flex:none;padding:8px;border-radius:50%;background:var(--brand-soft);color:var(--brand)}
-.hero__badge strong{display:block;font-family:var(--ff-display);font-size:1.25rem;font-weight:450;color:var(--ink)}
-.hero__badge small{display:block;font-size:.78rem;font-weight:600;color:var(--ink-2)}
-.js .hero__badge{animation:fadeUp 1s var(--ease) 1.05s both}
 
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
 .stats__item{padding:1.6rem 1.2rem 0 0}
@@ -657,7 +651,6 @@ p strong,li strong{color:var(--ink);font-weight:650}
   .header__tel span{display:none}
   .header__tel{width:42px;padding:0;justify-content:center}
   .hero__seal{left:-1.5rem}
-  .hero__badge{right:-.5rem}
 }
 
 @media (max-width:980px){
@@ -722,8 +715,6 @@ p strong,li strong{color:var(--ink);font-weight:650}
   .hero__actions .btn{flex:1 1 100%}
   .hero__seal{width:7rem;height:7rem;left:-.4rem;bottom:6%}
   .hero__seal text{font-size:17px}
-  .hero__badge{right:-.3rem;top:8%;padding:.8rem 1rem}
-  .hero__badge strong{font-size:1.05rem}
   .stats__item{padding:1.2rem .8rem 0 0}
   .stats__item + .stats__item{padding-left:1rem}
   .stats__item:nth-child(3){padding-left:0}

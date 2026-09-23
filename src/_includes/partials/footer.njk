@@ -1,5 +1,6 @@
 <!-- ============ PIE ============ -->
 <footer class="footer">
+  {% if not tieneContacto %}
   <div class="container footer__cta">
     <p class="eyebrow eyebrow--light"><span class="dot"></span> Presupuesto gratis y sin compromiso</p>
     <p class="footer__claim reveal">¿Le damos una <em>nueva vida</em> a su mueble?</p>
@@ -8,6 +9,7 @@
       <a class="btn btn--lg btn--wa" href="{{ site.whatsapp_mensaje | whatsapp(site.whatsapp) }}" target="_blank" rel="noopener">{% include "partials/ico-whatsapp.njk" %} Escríbanos por WhatsApp</a>
     </div>
   </div>
+  {% endif %}
 
   <div class="container footer__grid">
     <div class="footer__brand">

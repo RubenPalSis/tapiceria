@@ -39,51 +39,11 @@ secciones:
         texto: Localidades atendidas
     texto_desliza: Desliza
     ancla: inicio
-  - tipo: cinta
-    elementos:
-      - Sofás
-      - Cabeceros
-      - Chester
-      - Chaise longue
-      - Orejeros
-      - Sillas de comedor
-      - Rinconeras
-      - Butacas
-      - Mecedoras
-      - Pufs
-      - Caravanas
-  - tipo: presentacion
-    imagen: /img/about-taller.jpg
-    imagen_alt: Tapicero construyendo la estructura de un sofá a medida
-    imagen_flotante: /img/about-medida.jpg
-    imagen_flotante_alt: Sofá y butacas recién tapizados en un salón
-    sello:
-      cifra: '20'
-      texto: |-
-        años de
-        oficio
-    antetitulo: Quiénes somos
-    titulo: |-
-      Tapiceros a domicilio
-      en *Zaragoza*
-    entradilla: En Tapicerías Deluxe somos maestros tapiceros con más de 20 años realizando trabajos profesionales de alta calidad. Trabajamos cualquier tipo de mueble y cuidamos hasta el más mínimo detalle para lograr el mejor acabado.
-    parrafos:
-      - Realizamos tapizados, limpieza y reparaciones en toda Zaragoza para muebles de hogar, oficinas, discotecas, restaurantes, hoteles, bingos y cualquier espacio que necesite dar nueva vida a su mobiliario.
-    lista:
-      - Presupuesto gratis y sin compromiso
-      - Recogida y entrega a domicilio
-      - Telas de las mejores marcas del mercado
-      - Acabados artesanales cosidos a mano
-    enlace:
-      texto: Descubrir nuestros servicios
-      url: '#servicios'
-      estilo: flecha
-    ancla: intro
   - tipo: tarjetas
     encabezado:
       antetitulo: Nuestros servicios
       titulo: Su mueble, en *buenas manos*
-      entradilla: 'Seis especialidades y un único estándar: que su mueble salga mejor de lo que entró.'
+      entradilla: 'Cinco especialidades y un único estándar: que su mueble salga mejor de lo que entró.'
     tarjetas:
       - titulo: Tapizado de sofás
         url: /servicios/tapizado-sofas/
@@ -126,23 +86,6 @@ secciones:
         enlace:
           texto: Ver locales →
           url: /servicios/locales-y-comercios/
-      - titulo: Cabeceros y especiales
-        url: /servicios/
-        texto: Cabeceros a medida, tapizado de paredes acústicas, corte de espumas y rellenos especiales a domicilio.
-        imagen: /img/serv-cabeceros.jpg
-        imagen_alt: Cabecero tapizado acanalado en color rosa
-        enlace:
-          texto: Ver catálogo →
-          url: /servicios/
-      - titulo: Fabricamos a medida
-        url: /servicios/
-        texto: Sofás, bancos para bodegas, caravanas y mobiliario exclusivo. Lo construimos y tapizamos según sus especificaciones en Zaragoza.
-        imagen: /img/serv-medida.jpg
-        imagen_alt: Sofá y sillón fabricados a medida
-        ancha: true
-        enlace:
-          texto: Pedir presupuesto →
-          url: /contacto/
     ancla: servicios
     fondo: alterno
   - tipo: antes_despues
@@ -196,26 +139,11 @@ secciones:
         Así quedan los muebles
         que pasan por *nuestras manos*
       entradilla: Cada trabajo con sus fotos y, en muchos casos, el antes y el después.
-    cantidad: 6
-    destacar_primero: true
+    cantidad: 3
     boton:
       texto: Ver todos los trabajos
       url: /trabajos/
     ancla: trabajos
-  - tipo: clientes
-    titulo: Confían en nosotros
-    texto: Garantizamos la calidad de nuestros trabajos.
-    logos:
-      - imagen: /img/cliente-palco.jpg
-        alt: El Palco de las Esquinas
-      - imagen: /img/cliente-hide.jpg
-        alt: Hide Club
-      - imagen: /img/cliente-junquera.jpg
-        alt: La Junquera
-      - imagen: /img/cliente-mafia.jpg
-        alt: La Mafia se sienta a la mesa
-      - imagen: /img/cliente-urban.jpg
-        alt: Urban Cafe
   - tipo: preguntas
     encabezado:
       antetitulo: "Preguntas frecuentes"
@@ -230,29 +158,7 @@ secciones:
         respuesta: "Si la estructura es buena, casi siempre. Conserva la madera y la calidad original, elige la tela que quiera y cambiamos espumas y cinchas para que quede como nuevo, a menudo por menos de lo que cuesta uno nuevo de calidad similar."
       - pregunta: "¿Qué telas puedo elegir?"
         respuesta: "Trabajamos con un amplio muestrario: telas **antimanchas AquaClean** que se limpian con agua, cuero, polipiel, terciopelos, linos y tejidos **ignífugos** para hostelería. Le llevamos las muestras para que las vea en su casa."
-      - pregunta: "¿Cómo pido presupuesto?"
-        respuesta: "Llame al **654 68 06 67**, escríbanos por WhatsApp con una foto del mueble o rellene el formulario de contacto. Respondemos el mismo día, de lunes a sábado."
     ancla: preguntas-frecuentes
-  - tipo: llamada_accion
-    titulo: |-
-      Diseñe su sofá
-      y lo *hacemos realidad*
-    texto: '¿Le gusta un modelo pero no encaja en su salón? Fabricamos su mueble con la medida exacta: elija los brazos, las patas, los asientos, la forma y el tapizado. También realizamos trabajos especiales para caravanas, furgonetas, discotecas, bodegas y habitaciones.'
-    boton:
-      texto: Solicitar presupuesto
-      url: '#contacto'
-    boton_whatsapp:
-      texto: Escribir por WhatsApp
-      mensaje: Hola, quería pedir un presupuesto
-    pasos:
-      - titulo: Contacto
-        texto: Nos cuenta qué necesita por teléfono o WhatsApp.
-      - titulo: Visita y presupuesto
-        texto: Vamos a su domicilio con el muestrario. Gratis y sin compromiso.
-      - titulo: Taller
-        texto: Recogemos el mueble y lo trabajamos pieza a pieza.
-      - titulo: Entrega
-        texto: Se lo devolvemos montado y listo para disfrutar.
   - tipo: contacto_breve
     encabezado:
       antetitulo: Contacto
