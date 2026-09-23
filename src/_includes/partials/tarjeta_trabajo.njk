@@ -2,7 +2,7 @@
 <article class="wcard reveal" data-cat="{{ td.categoria }}" data-delay="{{ (loop.index0 % 3) + 1 }}">
   <a class="wcard__link" href="{{ t.url }}">
     <div class="wcard__media">
-      <img src="{{ td.portada }}" alt="{{ td.portada_alt or td.titulo }}" loading="lazy" decoding="async" style="view-transition-name:trabajo-{{ td.slug or t.page.fileSlug }}">
+      <img src="{{ td.portada }}" alt="{{ td.portada_alt or td.titulo }}" loading="lazy" sizes="(max-width: 640px) 92vw, (max-width: 980px) 46vw, 400px">
       <span class="chip chip--glass wcard__cat">{{ td.categoria | nombreCategoria(categorias) }}</span>
       {% if td.antes_despues and td.antes_despues.antes %}
       <span class="wcard__flag">Antes y después</span>

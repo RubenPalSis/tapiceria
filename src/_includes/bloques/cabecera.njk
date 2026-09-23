@@ -33,7 +33,7 @@
     </div>
     {% if b.imagen %}
     <figure class="page-hero__media reveal reveal--clip" data-delay="1">
-      <img src="{{ b.imagen }}" alt="{{ b.imagen_alt }}" fetchpriority="high" decoding="async">
+      <img src="{{ b.imagen }}" alt="{{ b.imagen_alt }}" fetchpriority="high" sizes="(max-width: 980px) 92vw, 460px">
     </figure>
     {% endif %}
   </div>

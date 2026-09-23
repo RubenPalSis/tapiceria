@@ -106,6 +106,8 @@
   window.addEventListener('resize', () => { if (window.innerWidth > 980 && nav.classList.contains('is-open')) setNav(false); });
 
   /* --------------------------------------------- Entrada al hacer scroll */
+  // Lo que ya está a la vista al cargar se muestra tal cual (sin parpadeo al cambiar de
+  // página); solo lo que queda más abajo espera a entrar en pantalla para animarse.
   const revealables = $$('.reveal');
   if ('IntersectionObserver' in window && !reduceMotion) {
     const io = new IntersectionObserver((entries, obs) => {
@@ -114,14 +116,45 @@
         entry.target.classList.add('is-in');
         obs.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
-    revealables.forEach(el => io.observe(el));
-  } else {
-    revealables.forEach(el => el.classList.add('is-in'));
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.04 });
+    const limite = window.innerHeight;
+    revealables.forEach(el => {
+      if (el.getBoundingClientRect().top < limite) return;
+      el.classList.add('is-pending');
+      io.observe(el);
+    });
   }
 
+  /* ------------------------------------------ Transición a un trabajo */
+  // Al pulsar una tarjeta, solo su foto viaja hasta la portada del trabajo. Si estamos en un
+  // trabajo, su portada deja de participar para que no se crucen dos fotos por la pantalla.
+  window.addEventListener('pageswap', e => {
+    if (!e.viewTransition || !e.activation || !e.activation.entry) return;
+    const destino = new URL(e.activation.entry.url).pathname;
+    const img = $(`.wcard__link[href="${destino}"] img`);
+    const portada = $('.work__cover .vt-foto');
+    if (img) {
+      const r = img.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < window.innerHeight) {
+        if (portada) portada.style.viewTransitionName = 'none';
+        img.style.viewTransitionName = 'foto-trabajo';
+        return;
+      }
+    }
+    // Si la portada del trabajo no está a la vista, que tampoco viaje.
+    if (portada) {
+      const r = portada.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) portada.style.viewTransitionName = 'none';
+    }
+  });
+  // Al volver con «atrás», la página puede salir de la caché con los nombres puestos.
+  window.addEventListener('pageshow', e => {
+    if (e.persisted) $$('[style*="view-transition-name"]').forEach(el => { el.style.viewTransitionName = ''; });
+  });
+
   /* ---------------------------------------------------------- Contadores */
-  const counters = $$('[data-count]');
+  const intro = document.documentElement.classList.contains('intro');
+  const counters = $$('[data-count]').filter(c => intro || c.getBoundingClientRect().top > window.innerHeight);
   if (counters.length && 'IntersectionObserver' in window && !reduceMotion) {
     const cio = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
@@ -317,7 +350,10 @@
       index = (index + items.length) % items.length;
       const btn = items[index];
       const img = $('img', btn);
-      lbImg.src = img.currentSrc || img.src;
+      // La mayor de las versiones generadas (la de la página es la del tamaño de la tarjeta).
+      const fuente = $('source[type="image/webp"]', btn);
+      const mayor = fuente && fuente.srcset.split(',').map(x => x.trim().split(' ')).sort((a, b) => parseInt(b[1]) - parseInt(a[1]))[0];
+      lbImg.src = mayor ? mayor[0] : (img.currentSrc || img.src);
       lbImg.alt = img.alt;
       lbCap.textContent = btn.dataset.caption || img.alt;
       lbPrev.hidden = lbNext.hidden = items.length < 2;

@@ -10,7 +10,7 @@
       {% for f in b.fotos %}
       <figure class="tile{% if f.formato == 'alta' %} tile--tall{% elif f.formato == 'ancha' %} tile--wide{% endif %} reveal" data-delay="{{ (loop.index0 % 3) + 1 }}">
         {% if b.ampliable %}<button class="tile__zoom" type="button" data-zoom data-caption="{{ f.leyenda or f.titulo }}" aria-label="Ampliar: {{ f.titulo or f.alt }}">{% endif %}
-        <img src="{{ f.imagen }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
+        <img src="{{ f.imagen }}" alt="{{ f.alt }}" loading="lazy" sizes="(max-width: 640px) 92vw, (max-width: 980px) 46vw, 420px">
         {% if b.ampliable %}</button>{% endif %}
         {% if f.titulo %}<figcaption>{{ f.titulo }}</figcaption>{% endif %}
       </figure>

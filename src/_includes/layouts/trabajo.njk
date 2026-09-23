@@ -1,7 +1,6 @@
 ---
 layout: base.njk
 ---
-{% set vt = "trabajo-" + (slug or page.fileSlug) %}
 {% set nombreCat = categoria | nombreCategoria(categorias) %}
 <article class="work" data-zoom-group>
   <header class="work-hero">
@@ -25,8 +24,8 @@ layout: base.njk
     {% if antes_despues and antes_despues.antes %}
     <div class="work__cover work__cover--ba">
       <div class="ba" style="--v:50%">
-        <img class="ba__img ba__img--after" src="{{ antes_despues.despues }}" alt="{{ titulo }}: después" style="view-transition-name:{{ vt }}" fetchpriority="high">
-        <img class="ba__img ba__img--before" src="{{ antes_despues.antes }}" alt="{{ titulo }}: antes">
+        <img class="ba__img ba__img--after vt-foto" src="{{ antes_despues.despues }}" alt="{{ titulo }}: después" fetchpriority="high" sizes="(max-width: 1300px) 96vw, 1240px">
+        <img class="ba__img ba__img--before" src="{{ antes_despues.antes }}" alt="{{ titulo }}: antes" sizes="(max-width: 1300px) 96vw, 1240px">
         <span class="ba__label ba__label--before">Antes</span>
         <span class="ba__label ba__label--after">Después</span>
         <button class="ba__handle" type="button" role="slider" aria-label="Comparar antes y después" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
@@ -37,7 +36,7 @@ layout: base.njk
     {% else %}
     <figure class="work__cover">
       <button class="tile__zoom" type="button" data-zoom data-caption="{{ titulo }}" aria-label="Ampliar foto">
-        <img src="{{ portada }}" alt="{{ portada_alt or titulo }}" style="view-transition-name:{{ vt }}" fetchpriority="high">
+        <img class="vt-foto" src="{{ portada }}" alt="{{ portada_alt or titulo }}" fetchpriority="high" sizes="(max-width: 1300px) 96vw, 1240px">
       </button>
     </figure>
     {% endif %}
@@ -67,7 +66,7 @@ layout: base.njk
         {% for f in fotos %}
         <figure class="tile reveal" data-delay="{{ (loop.index0 % 3) + 1 }}">
           <button class="tile__zoom" type="button" data-zoom data-caption="{{ f.alt }}" aria-label="Ampliar: {{ f.alt }}">
-            <img src="{{ f.imagen }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
+            <img src="{{ f.imagen }}" alt="{{ f.alt }}" loading="lazy" sizes="(max-width: 980px) 96vw, 620px">
           </button>
         </figure>
         {% endfor %}

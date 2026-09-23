@@ -3,11 +3,11 @@
   <div class="container split{% if b.imagen_derecha %} split--reverse{% endif %}">
     <div class="split__media">
       <figure class="split__img reveal reveal--clip">
-        <img src="{{ b.imagen }}" alt="{{ b.imagen_alt }}" loading="lazy" decoding="async">
+        <img src="{{ b.imagen }}" alt="{{ b.imagen_alt }}" loading="lazy" sizes="(max-width: 980px) 92vw, 560px">
       </figure>
       {% if b.imagen_flotante %}
       <figure class="split__float" data-parallax="-0.08">
-        <img src="{{ b.imagen_flotante }}" alt="{{ b.imagen_flotante_alt }}" loading="lazy" decoding="async">
+        <img src="{{ b.imagen_flotante }}" alt="{{ b.imagen_flotante_alt }}" loading="lazy" sizes="260px">
       </figure>
       {% endif %}
       {% if b.sello and b.sello.cifra %}

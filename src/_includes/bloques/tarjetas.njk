@@ -10,7 +10,7 @@
       {% for t in b.tarjetas %}
       {% set destino = t.url or (t.enlace.url if t.enlace) %}
       <article class="scard{% if t.ancha %} scard--wide{% endif %} reveal" data-delay="{{ (loop.index0 % 3) + 1 }}">
-        <img class="scard__img" src="{{ t.imagen }}" alt="{{ t.imagen_alt }}" loading="lazy" decoding="async">
+        <img class="scard__img" src="{{ t.imagen }}" alt="{{ t.imagen_alt }}" loading="lazy" sizes="(max-width: 640px) 92vw, (max-width: 980px) 46vw, 820px">
         <span class="scard__num">{{ loop.index | dosCifras }}</span>
         <div class="scard__body">
           <h3 class="scard__title">{% if destino %}<a href="{{ destino }}">{{ t.titulo }}</a>{% else %}{{ t.titulo }}{% endif %}</h3>

@@ -73,7 +73,8 @@ Casi todas las secciones tienen además:
 ### Imágenes
 
 - Se suben desde cualquier campo de imagen y se guardan en `src/img/`.
-- Usa **JPG de 1200–1600 px de ancho y menos de 300 KB**. Una foto de móvil sin reducir hace la web lenta, y eso empeora el SEO y encarece Google Ads. Para reducirlas sirve [squoosh.app](https://squoosh.app).
+- **Se optimizan solas al publicar**: cada foto se convierte a WebP en tres tamaños (480, 900 y 1400 px) y cada visitante descarga el que necesita (el móvil, el pequeño). También se añade su ancho y alto para que la página no dé saltos al cargar. Puedes subir la foto tal cual sale del móvil.
+- Aun así, mejor que no pase de **5 MB** por foto: cuanto más grande, más tarda la publicación.
 - Nombres en minúsculas, sin espacios ni tildes: `sofa-chester-salon.jpg`.
 - Rellena siempre el **texto alternativo** (qué se ve en la foto). Lo leen Google y los lectores de pantalla.
 
@@ -96,7 +97,7 @@ Casi todas las secciones tienen además:
    - **Texto del trabajo:** qué se hizo, qué tela, cuánto tardó… Cuanto más concreto, mejor para Google.
 3. Guarda.
 
-Aparecerá sola en tres sitios: en la portada (los 6 más recientes), en `/trabajos/` y en la ficha del servicio de su categoría.
+Aparecerá sola en tres sitios: en la portada (los 3 más recientes), en `/trabajos/` y en la ficha del servicio de su categoría.
 
 **Destacado** solo sirve para trabajos sin fecha: los sube por delante del resto.
 
@@ -242,6 +243,14 @@ Para que algo entre con animación al hacer scroll, ponle la clase `reveal` (y o
 - `src/_includes/layouts/trabajo.njk`: la página de cada trabajo.
 - `src/_includes/partials/header.njk` y `footer.njk`: cabecera y pie.
 
+### Rendimiento y transiciones
+
+- **Imágenes:** la optimización está en `eleventy.config.js` (`eleventyImageTransformPlugin`): formatos, tamaños y calidad. Cada `<img>` de las plantillas lleva un atributo `sizes` que indica al navegador cuánto ocupa la foto en pantalla; si creas una plantilla nueva con fotos, añádeselo (copia el de una parecida).
+- **Transiciones entre páginas** (Chrome y Edge): fundido corto, y al pulsar una tarjeta de trabajo su foto viaja hasta la portada del trabajo. El CSS está en `src/styles.css` (bloque «Transiciones entre páginas»); la lógica, en `src/script.js` («Transición a un trabajo») y en el script del `<head>` de `base.njk`.
+- **Precarga:** al pasar el ratón por un enlace interno, Chrome y Edge preparan la página de destino y el cambio es casi instantáneo (bloque `speculationrules` en `base.njk`).
+- **Animaciones al hacer scroll:** solo se animan los bloques que están más abajo de la pantalla al cargar; lo que se ve nada más entrar aparece directamente. La animación grande de la portada solo se ve la primera vez en cada visita.
+- **Google Ads** se descarga cuando la página ya ha cargado, para no retrasar fotos y textos. Las visitas y clics anteriores quedan en cola y se envían igual.
+
 ### Interacciones (JavaScript)
 
 Todo en `src/script.js`, sin librerías: tema claro/oscuro, aviso de cookies, conversiones de Google Ads, menú móvil, animaciones al hacer scroll, contadores, comparador antes/después, carrusel de logos, filtros de trabajos, visor de fotos y formulario.
@@ -352,4 +361,4 @@ Para comprobarlo: [Prueba de resultados enriquecidos](https://search.google.com/
 | `eleventy.config.js` | Configuración de Eleventy, filtros, colecciones y datos estructurados |
 | `.pages.yml` | Qué apartados y campos muestra Pages CMS |
 | `.github/workflows/deploy.yml` | Publicación automática en GitHub Pages |
-| `_site/` | Web generada (no se sube a GitHub, no la edites) |
+| `_site/` | Web generada, con las imágenes optimizadas en `_site/img/opt/` (no se sube a GitHub, no la edites) |

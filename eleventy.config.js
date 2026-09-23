@@ -5,8 +5,24 @@ const escapeHtml = s => String(s ?? '')
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 import { HtmlBasePlugin } from '@11ty/eleventy';
+import { eleventyImageTransformPlugin } from '@11ty/eleventy-img';
 
 export default function (eleventyConfig) {
+  // Cada <img> de la web se convierte en <picture> con WebP en varios tamaños, ancho y alto
+  // (para que no salte el contenido) y el JPG como respaldo. Vale también para lo que se
+  // sube desde el CMS. Va antes que HtmlBasePlugin para ver las rutas sin la subcarpeta.
+  eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+    formats: ['webp', 'jpeg'],
+    widths: [480, 900, 1400],
+    urlPath: '/img/opt/',
+    outputDir: './_site/img/opt/',
+    htmlOptions: {
+      imgAttributes: { decoding: 'async', sizes: '(max-width: 980px) 100vw, 50vw' },
+      pictureAttributes: {},
+    },
+    sharpJpegOptions: { quality: 78, progressive: true },
+    sharpWebpOptions: { quality: 74 },
+  });
   // En GitHub Pages sin dominio propio la web vive en /tapiceria/: el plugin antepone esa
   // carpeta a todos los enlaces e imágenes. Con dominio propio PATH_PREFIX llega vacío.
   eleventyConfig.addPlugin(HtmlBasePlugin);

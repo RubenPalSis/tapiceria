@@ -11,8 +11,8 @@
         {% for c in b.elementos %}
         <article class="ba-card">
           <div class="ba" style="--v:50%">
-            <img class="ba__img ba__img--after" src="{{ c.despues }}" alt="{{ c.despues_alt }}"{% if loop.index > 3 %} loading="lazy"{% endif %}>
-            <img class="ba__img ba__img--before" src="{{ c.antes }}" alt="{{ c.antes_alt }}"{% if loop.index > 3 %} loading="lazy"{% endif %}>
+            <img sizes="(max-width: 640px) 84vw, 560px" class="ba__img ba__img--after" src="{{ c.despues }}" alt="{{ c.despues_alt }}"{% if loop.index > 3 %} loading="lazy"{% endif %}>
+            <img sizes="(max-width: 640px) 84vw, 560px" class="ba__img ba__img--before" src="{{ c.antes }}" alt="{{ c.antes_alt }}"{% if loop.index > 3 %} loading="lazy"{% endif %}>
             <span class="ba__label ba__label--before">Antes</span>
             <span class="ba__label ba__label--after">Después</span>
             <button class="ba__handle" type="button" role="slider"

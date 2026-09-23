@@ -10,7 +10,7 @@
     <div class="logos__track" id="logosTrack">
       <ul class="logos__group" aria-label="Clientes">
         {% for l in b.logos %}
-        <li><img src="{{ l.imagen }}" alt="{{ l.alt }}" loading="lazy" decoding="async"></li>
+        <li><img src="{{ l.imagen }}" alt="{{ l.alt }}" loading="lazy" sizes="150px"></li>
         {% endfor %}
       </ul>
     </div>
