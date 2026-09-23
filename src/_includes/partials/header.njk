@@ -1,5 +1,5 @@
 <!-- ============ CABECERA ============ -->
-<header class="header" id="header">
+<header class="header{% if secciones and secciones[0].tipo == 'hero_inicio' %} header--sobre-imagen{% endif %}" id="header">
   <div class="header__bar">
     <a class="brand" href="/" aria-label="{{ site.nombre }}, inicio">
 {% include "partials/marca.njk" %}

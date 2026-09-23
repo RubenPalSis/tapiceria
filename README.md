@@ -48,7 +48,7 @@ Cada página es una lista de **secciones**. Desde el CMS puedes añadirlas, quit
 
 | Sección | Para qué sirve |
 | --- | --- |
-| Portada (hero) | La cabecera grande de la página de inicio: titular, texto, botones, foto en arco y cifras. Solo en Inicio. |
+| Portada (hero) | La cabecera grande de la página de inicio: foto a todo el ancho con el titular, el texto y los botones encima, y las cifras debajo. Solo en Inicio y siempre como primera sección. Usa una foto horizontal de al menos 1600 px de ancho; el texto va a la izquierda, así que lo importante de la foto conviene que quede a la derecha. |
 | Cabecera de página | Título de las páginas interiores, con migas de pan, botones opcionales y una **imagen opcional** a la derecha. Debe ser la primera sección. |
 | Cinta de palabras en movimiento | Franja oscura con palabras que se desplazan. |
 | Imagen + texto | Foto grande (y otra pequeña flotante opcional), sello redondo, título, párrafos, lista con ticks y un enlace o botón. Con **«Imagen a la derecha»** se invierte el orden. |
@@ -187,7 +187,7 @@ Estas cosas no están en el CMS. Se editan en GitHub (abre el archivo y pulsa el
 | --- | --- |
 | «¿Le damos una nueva vida a su mueble?» y el resto del pie | `src/_includes/partials/footer.njk` |
 | Texto del aviso de cookies | `src/_includes/partials/footer.njk` |
-| Tarjeta «Presupuesto gratis · Recogida y entrega a domicilio» y sello giratorio «Hecho a mano» de la portada | `src/_includes/bloques/hero_inicio.njk` |
+| Diseño de la portada (degradado, botones) | `src/_includes/bloques/hero_inicio.njk` |
 | Título «Pida su presupuesto» del formulario de la portada | `src/_includes/bloques/contacto_breve.njk` |
 | Etiquetas y botones del formulario | `src/_includes/partials/formulario.njk` |
 | Botones WhatsApp / Teléfono / Email junto al formulario | `src/_includes/partials/canales.njk` |
