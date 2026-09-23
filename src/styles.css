@@ -241,9 +241,6 @@ p strong,li strong{color:var(--ink);font-weight:650}
 .nav__num,.nav__foot{display:none}
 
 .header__actions{display:flex;align-items:center;gap:.35rem;position:relative;z-index:2}
-.header__tel{display:inline-flex;align-items:center;gap:.5rem;height:42px;padding:0 .9rem;border-radius:999px;font-weight:650;font-size:.9rem;color:var(--ink);transition:background-color .3s,color .3s}
-.header__tel svg{width:18px;height:18px;color:var(--brand)}
-.header__tel:hover{background:var(--brand-soft)}
 .icon-sun{display:none}
 [data-theme="dark"] .icon-sun{display:block}
 [data-theme="dark"] .icon-moon{display:none}
@@ -281,11 +278,8 @@ p strong,li strong{color:var(--ink);font-weight:650}
 .header--sobre-imagen:not(.is-stuck):not(.menu-open) .brand__text strong{color:rgba(255,255,255,.7)}
 .header--sobre-imagen:not(.is-stuck):not(.menu-open) .brand__text em,
 .header--sobre-imagen:not(.is-stuck):not(.menu-open) .brand__mark,
-.header--sobre-imagen:not(.is-stuck):not(.menu-open) .icon-btn,
-.header--sobre-imagen:not(.is-stuck):not(.menu-open) .header__tel,
-.header--sobre-imagen:not(.is-stuck):not(.menu-open) .header__tel svg{color:#fff}
-.header--sobre-imagen:not(.is-stuck):not(.menu-open) .icon-btn:hover,
-.header--sobre-imagen:not(.is-stuck):not(.menu-open) .header__tel:hover{background:rgba(255,255,255,.14)}
+.header--sobre-imagen:not(.is-stuck):not(.menu-open) .icon-btn{color:#fff}
+.header--sobre-imagen:not(.is-stuck):not(.menu-open) .icon-btn:hover{background:rgba(255,255,255,.14)}
 .header--sobre-imagen:not(.is-stuck):not(.menu-open) .header__cta{background:#fff;color:#1f1813}
 .header--sobre-imagen:not(.is-stuck):not(.menu-open) .burger{background:#fff}
 .header--sobre-imagen:not(.is-stuck):not(.menu-open) .burger span{background:#1f1813}
@@ -651,11 +645,6 @@ p strong,li strong{color:var(--ink);font-weight:650}
 /* ==========================================================================
    Adaptación a pantallas
    ========================================================================== */
-@media (max-width:1180px){
-  .header__tel span{display:none}
-  .header__tel{width:42px;padding:0;justify-content:center}
-}
-
 @media (max-width:980px){
   :root{--header-h:66px}
   .burger{display:block}
