@@ -26,7 +26,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Carpeta en la que publica GitHub Pages: "/tapiceria" sin dominio propio, vacía con dominio.
+      - id: pages
+        uses: actions/configure-pages@v5
       - run: npm run build
+        env:
+          PATH_PREFIX: ${{ steps.pages.outputs.base_path }}/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

@@ -4,7 +4,13 @@
 const escapeHtml = s => String(s ?? '')
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+import { HtmlBasePlugin } from '@11ty/eleventy';
+
 export default function (eleventyConfig) {
+  // En GitHub Pages sin dominio propio la web vive en /tapiceria/: el plugin antepone esa
+  // carpeta a todos los enlaces e imágenes. Con dominio propio PATH_PREFIX llega vacío.
+  eleventyConfig.addPlugin(HtmlBasePlugin);
+
   eleventyConfig.setNunjucksEnvironmentOptions({ autoescape: true, trimBlocks: true, lstripBlocks: true });
 
   for (const p of ['src/img', 'src/styles.css', 'src/script.js', 'src/robots.txt']) {
@@ -215,6 +221,7 @@ export default function (eleventyConfig) {
 
   return {
     dir: { input: 'src', output: '_site', includes: '_includes', layouts: '_includes/layouts', data: '_data' },
+    pathPrefix: process.env.PATH_PREFIX || '/',
     templateFormats: ['md', 'njk'],
     markdownTemplateEngine: false,
     htmlTemplateEngine: 'njk',

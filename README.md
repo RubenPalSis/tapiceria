@@ -267,7 +267,19 @@ npm start          # abre http://localhost:8080 y se recarga al guardar
 
 ## 5. Publicación y problemas típicos
 
-Cada cambio en la rama `main` (desde el CMS o con `git push`) lanza `.github/workflows/deploy.yml`, que compila la web y la publica en GitHub Pages. El dominio `tapiceriasdeluxe.com` se configura en **GitHub → Settings → Pages**.
+Cada cambio en la rama `main` (desde el CMS o con `git push`) lanza `.github/workflows/deploy.yml`, que compila la web y la publica en GitHub Pages.
+
+En **GitHub → Settings → Pages**, la opción *Source* debe estar en **GitHub Actions**. Con *Deploy from a branch*, GitHub publica el repositorio sin compilar y se ve una página en blanco con el título «tapiceria».
+
+### Dirección de la web y dominio propio
+
+- **Sin dominio propio**, la web está en **https://rubenpalsis.github.io/tapiceria/**. La compilación detecta sola la subcarpeta `/tapiceria/` y la añade a todos los enlaces e imágenes (`HtmlBasePlugin` en `eleventy.config.js`, variable `PATH_PREFIX` en el workflow).
+- **Para usar `tapiceriasdeluxe.com`:**
+  1. En **Settings → Pages → Custom domain**, escribe `tapiceriasdeluxe.com` y guarda.
+  2. En el panel DNS del dominio (Hostinger), apunta el dominio a GitHub Pages siguiendo [la guía de GitHub](https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site): registros `A` a `185.199.108.153`, `185.199.109.153`, `185.199.110.153` y `185.199.111.153`, y `CNAME` de `www` a `rubenpalsis.github.io`.
+  3. Cuando GitHub lo verifique, marca **Enforce HTTPS** y vuelve a ejecutar el workflow (Actions → *Publicar sitio* → *Run workflow*). A partir de ahí la web se publica en la raíz del dominio, sin subcarpeta, sin tocar nada más.
+
+  Al cambiar el DNS deja de verse la web anterior alojada en Hostinger, así que haz antes una copia si la necesitas.
 
 ### «He guardado y no cambia nada»
 
