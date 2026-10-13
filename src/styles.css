@@ -470,10 +470,9 @@ p strong,li strong{color:var(--ink);font-weight:650}
 .clients__head p{margin-top:.5rem}
 .logos{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .logos__track{display:flex;width:max-content;animation:logos var(--dur,30s) linear infinite}
-.logos:hover .logos__track{animation-play-state:paused}
 .logos__group{display:flex;align-items:center;gap:1.2rem;padding-right:1.2rem}
-.logos__group li{width:150px;height:84px;border-radius:var(--r-m);background:var(--surface);border:1px solid var(--line-2);display:grid;place-items:center;padding:.8rem;overflow:hidden}
-.logos__group img{max-height:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .4s,opacity .4s}
+.logos__group li{width:150px;height:84px;border-radius:var(--r-m);background:var(--surface);border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
+.logos__group img{width:100%;height:100%;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .4s,opacity .4s}
 .logos__group li:hover img{filter:none;opacity:1}
 @keyframes logos{to{transform:translateX(calc(var(--shift,50%) * -1))}}
 
