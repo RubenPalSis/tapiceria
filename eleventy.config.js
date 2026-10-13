@@ -107,6 +107,9 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addGlobalData('ahora', () => new Date());
 
+  // Fecha de cada página = su último cambio en git (para el <lastmod> del sitemap).
+  eleventyConfig.addGlobalData('date', 'git Last Modified');
+
   // JSON-LD seguro dentro de <script>: sin "</script>" ni comentarios HTML.
   eleventyConfig.addFilter('jsonld', obj => JSON.stringify(obj, null, 2).replace(/</g, '\\u003c'));
 

@@ -1,5 +1,5 @@
 ---
-titulo_seo: Contacto y Presupuesto de Tapicería en Zaragoza | Tapicerías Deluxe
+titulo_seo: Presupuesto de tapicería en Zaragoza | Tapicerías Deluxe
 descripcion: Solicite presupuesto de tapicería en Zaragoza gratis y sin compromiso. Contacte por teléfono, WhatsApp o formulario. Recogida y entrega a domicilio gratis.
 permalink: /contacto/
 og:

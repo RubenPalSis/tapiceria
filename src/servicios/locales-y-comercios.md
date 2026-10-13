@@ -1,5 +1,5 @@
 ---
-titulo_seo: Tapicería para Locales y Comercios en Zaragoza | Tapicerías Deluxe
+titulo_seo: Tapicería para locales en Zaragoza | Tapicerías Deluxe
 descripcion: Tapicería para restaurantes, hoteles, bares y comercios en Zaragoza. Bancos corridos, sillones y telas ignífugas de alto tránsito. Presupuesto sin compromiso.
 nombre: Locales y comercios
 slug: locales-y-comercios

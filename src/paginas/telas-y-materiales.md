@@ -1,6 +1,6 @@
 ---
-titulo_seo: Telas de Tapicería en Zaragoza · Tejidos y Rellenos | Tapicerías Deluxe
-descripcion: 'Telas de tapicería en Zaragoza para sofás, sillas y locales: antimanchas AquaClean, terciopelo, lino, polipiel, piel e ignífugas. Le llevamos el muestrario a casa.'
+titulo_seo: Telas de tapicería en Zaragoza | Tapicerías Deluxe
+descripcion: 'Telas de tapicería en Zaragoza para sofás, sillas y locales: antimanchas AquaClean, terciopelo, lino, polipiel, piel e ignífugas. Muestrario a domicilio.'
 permalink: /telas-y-materiales/
 og:
   titulo: Telas y materiales de tapicería · Tapicerías Deluxe Zaragoza

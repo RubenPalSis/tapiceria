@@ -1,6 +1,6 @@
 ---
-titulo_seo: Sobre Nosotros · Tapiceros en Zaragoza con más de 20 años | Tapicerías Deluxe
-descripcion: Conozca Tapicerías Deluxe, taller de tapicería artesanal en Zaragoza con más de 20 años de oficio. Trabajamos para hogares, hostelería y comercios de todo Aragón.
+titulo_seo: Tapiceros en Zaragoza desde hace 20 años | Tapicerías Deluxe
+descripcion: Conozca Tapicerías Deluxe, taller de tapicería artesanal en Zaragoza con más de 20 años de oficio. Para hogares, hostelería y comercios de todo Aragón.
 permalink: /nosotros/
 og:
   titulo: Sobre Tapicerías Deluxe · Tapiceros en Zaragoza

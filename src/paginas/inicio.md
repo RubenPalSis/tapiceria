@@ -1,5 +1,5 @@
 ---
-titulo_seo: Tapicería en Zaragoza | Tapiceros a Domicilio | Tapicerías Deluxe
+titulo_seo: Tapicería en Zaragoza a domicilio | Tapicerías Deluxe
 descripcion: Tapicería en Zaragoza con más de 20 años de experiencia. Tapizado de sofás, sillas, sillones, muebles y locales comerciales. Presupuesto gratis a domicilio.
 permalink: /
 og:
@@ -16,7 +16,7 @@ secciones:
     titulo:
       - Artesanos de la
       - '*tapicería*'
-      - clásica y _moderna._
+      - en _Zaragoza._
     entradilla: Maestros tapiceros en Zaragoza a domicilio. Tapizado y retapizado de sofás, sillas y muebles. Recogemos, transformamos y devolvemos su mueble como el primer día — sin que usted salga de casa.
     imagen: /img/hero-salon.jpg
     imagen_alt: Salón moderno con sofá tapizado en tela gris

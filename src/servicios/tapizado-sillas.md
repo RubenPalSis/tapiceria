@@ -1,6 +1,6 @@
 ---
 titulo_seo: Tapizado de Sillas en Zaragoza | Tapicerías Deluxe
-descripcion: Tapizado de sillas en Zaragoza. Sillas de comedor, butacas, descalzadoras y sillas de oficina. Rellenos de alta densidad y telas antimanchas. Presupuesto gratis.
+descripcion: Tapizado de sillas en Zaragoza. Sillas de comedor, butacas, descalzadoras y sillas de oficina. Rellenos de alta densidad y telas antimancha. Presupuesto gratis.
 nombre: Tapizado de sillas
 slug: tapizado-sillas
 orden: 2

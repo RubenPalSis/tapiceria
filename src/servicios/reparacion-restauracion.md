@@ -1,5 +1,5 @@
 ---
-titulo_seo: Reparación y Restauración de Muebles en Zaragoza | Tapicerías Deluxe
+titulo_seo: Restauración de muebles en Zaragoza | Tapicerías Deluxe
 descripcion: Reparación y restauración de muebles y tapicería en Zaragoza. Cambio de muelles, cinchas, rellenos de espuma y barnizado artesanal. Presupuesto sin compromiso.
 nombre: Reparación y restauración
 slug: reparacion-restauracion

@@ -8,7 +8,7 @@ eleventyExcludeFromCollections: true
 {% if p.url and not p.data.noindex and not (p.data.sitemap and p.data.sitemap.excluir) %}
   <url>
     <loc>{{ site.url }}{{ p.url }}</loc>
-    <lastmod>{{ ahora.toISOString().slice(0, 10) }}</lastmod>
+    <lastmod>{{ p.date.toISOString().slice(0, 10) }}</lastmod>
     <changefreq>{{ p.data.sitemap.frecuencia or "monthly" }}</changefreq>
     <priority>{{ p.data.sitemap.prioridad or "0.8" }}</priority>
   </url>

@@ -318,7 +318,7 @@ En GitHub, abre el archivo → **History** → elige la versión buena → copia
 ### SEO automático
 
 - **Datos estructurados (JSON-LD):** se generan solos en cada página a partir de *Ajustes del sitio* (nombre, teléfono, horario, zonas, coordenadas, redes) y de las secciones: negocio local, migas de pan, ficha de servicio, trabajo realizado y preguntas frecuentes. El código está en `eleventy.config.js` (filtro `esquema`). El campo **Datos estructurados extra** de cada página solo hace falta para algo especial.
-- **Sitemap:** `/sitemap.xml` se genera con todas las páginas salvo las marcadas *Ocultar a buscadores*. Está declarado en `src/robots.txt`.
+- **Sitemap:** `/sitemap.xml` se genera con todas las páginas salvo las marcadas *Ocultar a buscadores*. Está declarado en `src/robots.txt`. La fecha de cada página (`<lastmod>`) es la de su último cambio en git.
 - **Etiquetas en el `<head>`:** canonical, Open Graph, Twitter y geolocalización, en `src/_includes/layouts/base.njk`.
 - Las páginas legales y la 404 no se indexan.
 
@@ -336,6 +336,7 @@ Para comprobarlo: [Prueba de resultados enriquecidos](https://search.google.com/
   - envío correcto del formulario por email.
 
   Funciona con cualquier enlace nuevo de ese tipo que añadas, sin tocar código. El código está en `src/script.js` (función `registrarConversion`).
+- **Conversiones mejoradas:** al enviar el formulario se pasan a Google el email y el teléfono del cliente (Google los cifra y solo los usa si se aceptaron las cookies). Para aprovecharlo, en Google Ads: *Objetivos → Conversiones → Configuración → Conversiones mejoradas* → activar con **etiqueta de Google**.
 - **Comprobarlo:** abre la web con [Tag Assistant](https://tagassistant.google.com), pulsa el teléfono o WhatsApp y verás el evento `conversion`. En Google Ads, *Objetivos → Conversiones*, la acción debe aparecer como **Activa** (tarda hasta 24–48 h en actualizarse).
 - Si cambias las cookies que se usan, actualiza **Páginas → Política de cookies**.
 

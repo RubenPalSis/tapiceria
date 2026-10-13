@@ -442,6 +442,12 @@
       `\n${data.mensaje}`;
 
     if (typeof window.gtag === 'function') {
+      // Conversiones mejoradas: Google cifra email y teléfono y solo los usa con consentimiento.
+      const tel = String(data.telefono || '').replace(/[^\d+]/g, '');
+      window.gtag('set', 'user_data', {
+        ...(data.email ? { email: data.email.trim().toLowerCase() } : {}),
+        ...(tel ? { phone_number: tel.startsWith('+') ? tel : '+34' + tel.replace(/^0+/, '') } : {}),
+      });
       window.gtag('event', 'generate_lead', { event_category: 'Contacto', event_label: data.servicio, method });
     }
     if (Array.isArray(window.dataLayer)) {

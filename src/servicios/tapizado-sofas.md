@@ -1,5 +1,5 @@
 ---
-titulo_seo: Tapizado de Sofás en Zaragoza | Retapizar Sofá | Tapicerías Deluxe
+titulo_seo: Tapizado de sofás en Zaragoza | Tapicerías Deluxe
 descripcion: Tapizado y retapizado de sofás en Zaragoza. Chaise longue, rinconeras, chester y sofás a medida con telas antimanchas. Presupuesto gratis a domicilio.
 nombre: Tapizado de sofás
 slug: tapizado-sofas

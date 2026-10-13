@@ -1,5 +1,5 @@
 ---
-titulo_seo: 'Trabajos de Tapicería en Zaragoza · Antes y Después | Tapicerías Deluxe'
+titulo_seo: 'Trabajos de tapicería: antes y después | Tapicerías Deluxe'
 descripcion: Galería de fotos de trabajos de tapicería realizados en Zaragoza. Sofás, butacas, sillas, restaurantes y cabeceros restaurados por Tapicerías Deluxe.
 permalink: /trabajos/
 og:
