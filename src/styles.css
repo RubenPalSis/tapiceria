@@ -226,9 +226,8 @@ p strong,li strong{color:var(--ink);font-weight:650}
 .header.is-hidden{transform:translateY(-130%)}
 
 .brand{display:flex;align-items:center;gap:.65rem;position:relative;z-index:2}
-.brand__mark{width:36px;height:36px;color:var(--brand);flex:none;transition:transform .6s var(--ease)}
-.brand__mark svg{width:100%;height:100%}
-.brand:hover .brand__mark{transform:rotate(-10deg) scale(1.06)}
+.brand__mark{width:52px;height:52px;border-radius:50%;background:#fff;flex:none;transition:transform .6s var(--ease)}
+.brand:hover .brand__mark{transform:scale(1.06)}
 .brand__text{display:flex;flex-direction:column;line-height:1}
 .brand__text strong{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--ink-3)}
 .brand__text em{font-family:var(--ff-display);font-style:italic;font-size:1.34rem;font-weight:450;color:var(--ink);margin-top:.1rem}
