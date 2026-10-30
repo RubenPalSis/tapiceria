@@ -21,7 +21,7 @@ secciones:
         <li><strong>Denominación comercial:</strong> Tapicerías Deluxe</li>
         <li><strong>Actividad:</strong> Taller artesanal de tapicería, retapizado, restauración y confección a medida</li>
         <li><strong>Ámbito geográfico:</strong> Zaragoza y Comunidad Autónoma de Aragón, España</li>
-        <li><strong>Teléfono de atención:</strong> +34 654 68 06 67</li>
+        <li><strong>Teléfono de atención:</strong> <a class="phone-link" href="tel:+34654680667">+34 654 68 06 67</a></li>
         <li><strong>Correo electrónico de contacto:</strong> <a href="mailto:tapiceriasdeluxe@gmail.com">tapiceriasdeluxe@gmail.com</a></li>
       </ul>
 

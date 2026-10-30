@@ -17,7 +17,7 @@ secciones:
       <p>
         <strong>Identidad:</strong> Tapicerías Deluxe<br>
         <strong>Domicilio de actividad:</strong> Zaragoza, España<br>
-        <strong>Teléfono:</strong> +34 654 68 06 67<br>
+        <strong>Teléfono:</strong> <a class="phone-link" href="tel:+34654680667">+34 654 68 06 67</a><br>
         <strong>Correo electrónico de contacto:</strong> <a href="mailto:tapiceriasdeluxe@gmail.com">tapiceriasdeluxe@gmail.com</a>
       </p>
 

@@ -88,7 +88,7 @@ secciones:
       - pregunta: "¿Merece la pena restaurar un mueble antiguo?"
         respuesta: "La madera antigua tiene una solidez difícil de igualar. Analizamos su estado **de forma gratuita** y le decimos con sinceridad si compensa restaurarlo."
       - pregunta: "¿Cómo pido presupuesto de una reparación?"
-        respuesta: "Envíenos fotos por WhatsApp al 654 68 06 67 o rellene el formulario. El presupuesto es gratis y sin compromiso."
+        respuesta: 'Envíenos fotos por WhatsApp al <a class="phone-link" href="tel:+34654680667">654 68 06 67</a> o rellene el formulario. El presupuesto es gratis y sin compromiso.'
     ancla: preguntas-frecuentes
   - tipo: llamada_accion
     titulo: |-

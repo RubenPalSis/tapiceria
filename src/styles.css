@@ -521,7 +521,10 @@ p strong,li strong{color:var(--ink);font-weight:650}
 .channel__txt{display:flex;flex-direction:column;flex:1;min-width:0;line-height:1.3}
 .channel__txt small{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
 .channel__txt strong{font-size:1.02rem;color:var(--ink)}
+.channel__txt strong a{color:inherit;text-decoration:none}
 .channel__txt span{font-size:.9rem;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis}
+.channel__phone{font-size:.9rem;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.phone-link{color:inherit;text-decoration:none}
 .channel__arrow{color:var(--brand);font-size:1.2rem;transition:transform .35s var(--ease)}
 .channel:hover .channel__arrow{transform:translateX(4px)}
 .channels__hours{display:flex;align-items:center;gap:.6rem;margin-top:1.2rem;font-size:.9rem;font-weight:600}

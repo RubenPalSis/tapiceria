@@ -44,25 +44,6 @@
   $('#cookiesNo')?.addEventListener('click', () => guardarConsentimiento(false));
   $('#cookiesConfig')?.addEventListener('click', () => { if (cookies) cookies.hidden = false; });
 
-  /* ------------------------------------------ Conversiones de Google Ads */
-  // Acción «Solicitud de presupuesto»: cualquier contacto directo cuenta como conversión.
-  function registrarConversion(canal) {
-    const sendTo = document.body.dataset.conversion;
-    if (typeof window.gtag !== 'function' || !sendTo) return;
-    window.gtag('event', 'conversion', { send_to: sendTo, canal: canal, transport_type: 'beacon' });
-  }
-
-  document.addEventListener('click', e => {
-    const a = e.target.closest('a[href]');
-    if (!a) return;
-    const href = a.getAttribute('href');
-    const canal = href.startsWith('tel:') ? 'telefono'
-      : href.startsWith('mailto:') ? 'email'
-      : /^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(href) ? 'whatsapp'
-      : null;
-    if (canal) registrarConversion(canal);
-  });
-
   /* ------------------------------------------------------------ Cabecera */
   const header = $('#header');
   const burger = $('#burger');
@@ -472,7 +453,9 @@
             ok.hidden = false;
             ok.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
           }
-          registrarConversion('formulario_email');
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'conversion', { send_to: 'AW-445269684/7FmXCL623a4dELSNqdQB' });
+          }
         } else {
           return res.json().then(d => mostrarError(d.errors
             ? d.errors.map(x => x.message).join(', ')
@@ -482,7 +465,9 @@
       .catch(() => mostrarError('Error de conexión. Inténtelo de nuevo.'))
       .finally(() => btns.forEach(b => { b.disabled = false; }));
     } else {
-      registrarConversion('formulario_whatsapp');
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', { send_to: 'AW-445269684/7FmXCL623a4dELSNqdQB' });
+      }
       window.open(`https://wa.me/${document.body.dataset.whatsapp || '34654680667'}?text=${encodeURIComponent(cuerpo)}`, '_blank', 'noopener');
     }
   });

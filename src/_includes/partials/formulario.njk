@@ -51,6 +51,6 @@
           <div>
             <h4>{{ formExitoTitulo or "¡Solicitud enviada!" }}</h4>
             <p>{{ formExitoTexto or "Gracias. Le responderemos lo antes posible, normalmente el mismo día." }}</p>
-            <p>Si lo prefiere, escríbanos por <a href="{{ '' | whatsapp(site.whatsapp) }}" target="_blank" rel="noopener">WhatsApp al {{ site.telefono_corto }}</a>.</p>
+            <p>Si lo prefiere, escríbanos por <a href="{{ '' | whatsapp(site.whatsapp) }}" target="_blank" rel="noopener">WhatsApp</a> al <a href="tel:{{ site.telefono }}">{{ site.telefono_corto }}</a>.</p>
           </div>
         </div>

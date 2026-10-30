@@ -5,6 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-445269684"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'denied', wait_for_update: 500
+  });
+  try {
+    if (localStorage.getItem('td-cookies') === 'aceptadas') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'
+      });
+    }
+  } catch (e) {}
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+  gtag('js', new Date());
+  gtag('config', 'AW-445269684');
+</script>
 <script>
 (function(){
   var d=document.documentElement;d.classList.add('js');
@@ -33,53 +53,6 @@
 {% set ogTitulo = (og.titulo if og and og.titulo) or titulo_seo %}
 {% set ogDescripcion = (og.descripcion if og and og.descripcion) or descripcion %}
 {% set ogImagen = site.url + ((og.imagen if og and og.imagen) or site.imagen_social) %}
-{% if site.google_ads_id %}
-<!-- Google tag (gtag.js) · Google Ads con modo de consentimiento v2.
-     Se descarga en cuanto la página ha cargado para no competir con fotos y fuentes;
-     todo lo que se registre antes (visita, clics) queda en cola en dataLayer. -->
-<script>
-  addEventListener('load', function () {
-    var g = document.createElement('script');
-    g.async = true;
-    g.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.google_ads_id }}';
-    document.head.appendChild(g);
-  });
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', {
-    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
-    analytics_storage: 'denied', wait_for_update: 500
-  });
-  try {
-    if (localStorage.getItem('td-cookies') === 'aceptadas') {
-      gtag('consent', 'update', {
-        ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'
-      });
-    }
-  } catch (e) {}
-  gtag('set', 'ads_data_redaction', true);
-  gtag('set', 'url_passthrough', true);
-  gtag('js', new Date());
-  gtag('config', '{{ site.google_ads_id }}');
-</script>
-<!-- Event snippet for Solicitud de presupuesto conversion page -->
-<script>
-  function gtag_report_conversion(url) {
-    var callback = function () {
-      if (typeof(url) != 'undefined') {
-        window.location = url;
-      }
-    };
-    gtag('event', 'conversion', {
-        'send_to': '{{ site.google_ads_conversion }}',
-        'event_callback': callback
-    });
-    return false;
-  }
-</script>
-{% endif %}
 <title>{{ titulo_seo }}</title>
 <meta name="description" content="{{ descripcion }}">
 {% if noindex %}
@@ -123,7 +96,7 @@
 </script>
 {% endif %}
 </head>
-<body data-whatsapp="{{ site.whatsapp }}" data-formspree="{{ site.formspree_url }}" data-conversion="{{ site.google_ads_conversion }}">
+<body data-whatsapp="{{ site.whatsapp }}" data-formspree="{{ site.formspree_url }}">
 
 <div class="scroll-progress" aria-hidden="true"><span id="progressBar"></span></div>
 
