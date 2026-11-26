@@ -29,7 +29,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.setNunjucksEnvironmentOptions({ autoescape: true, trimBlocks: true, lstripBlocks: true });
 
-  for (const p of ['src/img', 'src/styles.css', 'src/script.js', 'src/robots.txt']) {
+  for (const p of ['src/img', 'src/styles.css', 'src/script.js', 'src/conversiones.js', 'src/robots.txt']) {
     eleventyConfig.addPassthroughCopy(p);
   }
 
