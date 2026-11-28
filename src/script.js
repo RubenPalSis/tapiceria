@@ -380,19 +380,18 @@
   /* ------------------------------------------------- Formulario de contacto */
   const form = $('#contactForm');
   const formError = $('#formError');
-  let method = 'whatsapp';
+  let sendingEmail = false;
 
   const mostrarError = texto => {
     formError.hidden = !texto;
     formError.textContent = texto || '';
   };
 
-  $$('#contactForm [type="submit"]').forEach(btn => {
-    btn.addEventListener('click', () => { method = btn.dataset.method; });
-  });
-
   form?.addEventListener('submit', e => {
     e.preventDefault();
+    if (sendingEmail) return;
+
+    const method = e.submitter?.dataset.method || 'whatsapp';
     const data = {
       nombre:   $('#nombre').value.trim(),
       telefono: $('#telefono').value.trim(),
@@ -422,20 +421,8 @@
       (data.email ? `Email: ${data.email}\n` : '') +
       `\n${data.mensaje}`;
 
-    if (typeof window.gtag === 'function') {
-      // Conversiones mejoradas: Google cifra email y teléfono y solo los usa con consentimiento.
-      const tel = String(data.telefono || '').replace(/[^\d+]/g, '');
-      window.gtag('set', 'user_data', {
-        ...(data.email ? { email: data.email.trim().toLowerCase() } : {}),
-        ...(tel ? { phone_number: tel.startsWith('+') ? tel : '+34' + tel.replace(/^0+/, '') } : {}),
-      });
-      window.gtag('event', 'generate_lead', { event_category: 'Contacto', event_label: data.servicio, method });
-    }
-    if (Array.isArray(window.dataLayer)) {
-      window.dataLayer.push({ event: 'lead_presupuesto', servicio: data.servicio, metodo_contacto: method });
-    }
-
     if (method === 'email') {
+      sendingEmail = true;
       const btns = $$('#contactForm [type="submit"]');
       btns.forEach(b => { b.disabled = true; });
 
@@ -455,6 +442,10 @@
           }
           if (typeof window.gtag === 'function') {
             window.gtag('event', 'conversion', { send_to: 'AW-445269684/7FmXCL623a4dELSNqdQB' });
+            window.gtag('event', 'generate_lead', { event_category: 'Contacto', event_label: data.servicio, method });
+          }
+          if (Array.isArray(window.dataLayer)) {
+            window.dataLayer.push({ event: 'lead_presupuesto', servicio: data.servicio, metodo_contacto: method });
           }
         } else {
           return res.json().then(d => mostrarError(d.errors
@@ -463,10 +454,13 @@
         }
       })
       .catch(() => mostrarError('Error de conexión. Inténtelo de nuevo.'))
-      .finally(() => btns.forEach(b => { b.disabled = false; }));
+      .finally(() => {
+        sendingEmail = false;
+        btns.forEach(b => { b.disabled = false; });
+      });
     } else {
       if (typeof window.gtag === 'function') {
-        window.gtag('event', 'conversion', { send_to: 'AW-445269684/7FmXCL623a4dELSNqdQB' });
+        window.gtag('event', 'conversion', { send_to: 'AW-445269684/ia69CJjh2a4dELSNqdQB' });
       }
       window.open(`https://wa.me/${document.body.dataset.whatsapp || '34654680667'}?text=${encodeURIComponent(cuerpo)}`, '_blank', 'noopener');
     }
